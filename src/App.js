@@ -19,8 +19,7 @@ function App() {
 
         fetchFromAPI(`cameras`)
           .then((data) => {
-            console.log(data)
-            setCameraList(data?.map(v => ({...v, id: v?.uuid, manufacturer_name: v?.manufacturer?.name, lens_mount: v?.lens_mount?.name})));
+          setCameraList(data?.map(v => ({...v, id: v?.uuid, manufacturer_name: v?.manufacturer?.name, lens_mount: v?.lens_mount?.name})));
           setCamerasLoading(false)})
         }, [camerasLoading]);
 

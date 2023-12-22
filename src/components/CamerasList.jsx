@@ -1,12 +1,12 @@
-import React, { useEffect, useState,  } from 'react'
-import DaraGrid from './DataGrid'
+import React from 'react'
+import FullFeaturedCrudGrid from './FullFeaturedCrudGrid'
 
 const CamerasList = ({cameraList, camerasLoading, setCamerasLoading}) => {
 
 
     if (!camerasLoading) {return (
       <div>
-    <DaraGrid
+    <FullFeaturedCrudGrid
     initialRows={cameraList}
     tableColumns={tableColumns}
     setUpdate={setCamerasLoading}

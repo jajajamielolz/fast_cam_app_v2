@@ -38,7 +38,8 @@ const randomRole = () => {
 
 
 function EditToolbar(props) {
-  const { setRows, setRowModesModel} = props;
+
+  const { setRows, setRowModesModel, initialRows, setUpdate} = props;
 
   const handleClick = () => {
     const id = randomId();
@@ -51,13 +52,13 @@ function EditToolbar(props) {
 
   return (
     <GridToolbarContainer>
-      <AddCameraModal setRows={setRows}/>
+      <AddCameraModal setCameras={setRows} initialCameras={initialRows} setUpdate={setUpdate}/>
     </GridToolbarContainer>
   );
 }
 
 
-export default function FullFeaturedCrudGrid({initialRows, tableColumns}) {
+export default function FullFeaturedCrudGrid({initialRows, tableColumns, setUpdate}) {
   const [rows, setRows] = React.useState(initialRows);
   const [rowModesModel, setRowModesModel] = React.useState({});
 
@@ -74,9 +75,6 @@ export default function FullFeaturedCrudGrid({initialRows, tableColumns}) {
 
   const handleSaveClick = (id) => () => {
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
-    console.log('clicked save!!')
-    console.log(id)
-
   };
 
   const handleDeleteClick = (uuid) => () => {
@@ -186,7 +184,7 @@ export default function FullFeaturedCrudGrid({initialRows, tableColumns}) {
           toolbar: EditToolbar,
         }}
         slotProps={{
-          toolbar: { setRows, setRowModesModel },
+          toolbar: { setRows, setRowModesModel, initialRows, setUpdate },
         }}
       />
     </Box>

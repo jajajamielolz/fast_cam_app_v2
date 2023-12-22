@@ -9,7 +9,7 @@ import {postToAPI} from '../utils/postToAPI.js'
 
 
 
-export default function AddCameraModal({setRows}) { 
+export default function AddCameraModal({setCameras, initialCameras, setUpdate}) { 
   const [open, setOpen] = useState(false);
   const [cameraName, setCameraName] = useState(null);
   const [lensMount, setLensMount] = useState(null);
@@ -26,16 +26,11 @@ export default function AddCameraModal({setRows}) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(cameraName?.title)
-    console.log(manufacturerName?.title)
-    console.log(lensMount?.title)
     const data = {
       name: cameraName?.title,
-      lens_mount: { name: manufacturerName?.title},
-      manufacturer: { name: lensMount?.title},
+      manufacturer: { name: manufacturerName?.title},
+      lens_mount: { name: lensMount?.title},
     };
-    // TODO: add error handling
-    console.log('adding a new row to the current grid')
     const response = postToAPI('cameras', data)
 
     response.then(function(result) {
@@ -47,22 +42,15 @@ export default function AddCameraModal({setRows}) {
         "manufacturer_name": result.data.manufacturer.name 
 
       }
-      setRows((oldRows) => [{ ...newRow,  isNew: true }, ...oldRows]);
-      console.log(newRow)
+      setCameras((oldRows) => [{ ...newRow,  isNew: true }, ...oldRows]);
+      setUpdate(true)
    })
-    
     setOpen(false);
   };
 
-  const cameraResponse = [
-    { name: 'Pentax LX', uuid: 1994, "manufacturer": {"name": "Pentax"}, "lens_mount": "K mount" },
-    { name: 'Yashica FX3', uuid: 1972,  "manufacturer": {"name": "Yashica"}, "lens_mount": "C/Y" },
-    { name: 'Minolta Mini', uuid: 1974,  "manufacturer": {"name": "Minolta"}, "lens_mount": "MD" },
-    { name: 'Contax Quartz 139', uuid: 2008,  "manufacturer": {"name": "contax"}, "lens_mount": "C/Y" }
-  ]
 
-  const manufacturerList = cameraResponse.map(v => ({...v, title: v.manufacturer.name}))
-  const lensMountList = cameraResponse.map(v => ({...v, title: v.lens_mount}))
+  const manufacturerList = [...new Set(initialCameras.map(camera => camera.manufacturer_name))].map(title => ({title: title}))
+  const lensMountList = [...new Set(initialCameras.map(camera => camera.lens_mount))].map(title => ({title: title}))
   
 
   return (
