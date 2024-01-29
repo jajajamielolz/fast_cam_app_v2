@@ -1,10 +1,11 @@
 {
-  "name": "project_youtube_video_player",
+  "name": "camera_db",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
+    "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.3",
     "@mui/x-data-grid-generator": "^6.18.0",

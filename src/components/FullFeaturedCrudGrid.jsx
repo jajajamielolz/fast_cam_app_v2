@@ -23,6 +23,8 @@ import {
   GridRowId,
   GridRowModel,
   GridRowEditStopReasons,
+  GridFilterForm,
+  getGridNumericOperators
 } from '@mui/x-data-grid';
 import {
   randomCreatedDate,
@@ -173,6 +175,7 @@ export default function FullFeaturedCrudGrid({initialRows, tableColumns, setUpda
       }}
     >
       <DataGrid
+      
         rows={rows}
         columns={columns}
         editMode="row"
@@ -181,7 +184,7 @@ export default function FullFeaturedCrudGrid({initialRows, tableColumns, setUpda
         onRowEditStop={handleRowEditStop}
         processRowUpdate={processRowUpdate}
         slots={{
-          toolbar: EditToolbar,
+          toolbar: EditToolbar,          
         }}
         slotProps={{
           toolbar: { setRows, setRowModesModel, initialRows, setUpdate },

@@ -4,7 +4,7 @@ import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 
 const filter = createFilterOptions();
 
-export default function FreeSoloCreateOption({availableOptions, value, setValue, fieldTitle}) {
+export default function CreatableAutoComplete({availableOptions, value, setValue, fieldTitle, disableAdd=false}) {
 
   return (
     <Autocomplete
@@ -29,7 +29,7 @@ export default function FreeSoloCreateOption({availableOptions, value, setValue,
         const { inputValue } = params;
         // Suggest the creation of a new value
         const isExisting = options.some((option) => inputValue === option.title);
-        if (inputValue !== '' && !isExisting) {
+        if (inputValue !== '' && !isExisting && !disableAdd) {
           filtered.push({
             inputValue,
             title: `Add "${inputValue}"`,
@@ -70,10 +70,3 @@ export default function FreeSoloCreateOption({availableOptions, value, setValue,
     />
   );
 }
-
-const top100Films = [
-  { title: 'The Shawshank Redemption', year: 1994 },
-  { title: 'The Godfather', year: 1972 },
-  { title: 'The Godfather: Part II', year: 1974 },
-  { title: 'The Dark Knight', year: 2008 },
-  { title: '12 Angry Men', year: 1957 }]
