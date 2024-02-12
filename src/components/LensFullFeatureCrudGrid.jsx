@@ -6,7 +6,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
 import { deleteFromAPI } from '../utils/deleteFromAPI'
 import {patchToAPI } from '../utils/patchToAPI'
-import AddCameraModal from './AddCameraModal'
+import AddLensModal from './AddLensModal'
 
 
 import Button from '@mui/material/Button';
@@ -54,13 +54,13 @@ function EditToolbar(props) {
 
   return (
     <GridToolbarContainer>
-      <AddCameraModal setCameras={setRows} initialCameras={initialRows} setUpdate={setUpdate}/>
+      <AddLensModal setLenses={setRows} initialLenses={initialRows} setUpdate={setUpdate}/>
     </GridToolbarContainer>
   );
 }
 
 
-export default function FullFeaturedCrudGrid({initialRows, tableColumns, setUpdate}) {
+export default function LensFullFeatureCrudGrid({initialRows, tableColumns, setUpdate}) {
   const [rows, setRows] = React.useState(initialRows);
   const [rowModesModel, setRowModesModel] = React.useState({});
 
@@ -80,7 +80,7 @@ export default function FullFeaturedCrudGrid({initialRows, tableColumns, setUpda
   };
 
   const handleDeleteClick = (uuid) => () => {
-    deleteFromAPI(`cameras`, uuid)
+    deleteFromAPI(`lenses`, uuid)
     setRows(rows.filter((row) => row.uuid !== uuid));
   };
 
@@ -98,11 +98,17 @@ export default function FullFeaturedCrudGrid({initialRows, tableColumns, setUpda
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
+    console.log(newRow)
+    // TODO: add all new fields here to be updated accordingly
+
     const data = {
       name: newRow?.name,
+      min_aperture: newRow?.min_aperture,
+      max_aperture: newRow?.max_aperture,
+      manual: newRow?.manual
     };
 
-    patchToAPI(`cameras`, newRow.uuid, data)
+    patchToAPI(`lenses`, newRow.uuid, data)
     setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
     return updatedRow;
   };
