@@ -58,15 +58,6 @@ const tableColumns =  [
   valueOptions: APERTURE_VALUES.reverse(),
   filterOperators: getGridNumericOperators()
 },
-{
-  field: 'Manual Focus',
-  headerName: 'manual',
-  width: 110,
-  editable: true,
-  type: 'singleSelect',
-  valueOptions: ['true', 'false'],
-},
-
 
 ]
 

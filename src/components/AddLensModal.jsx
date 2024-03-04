@@ -19,15 +19,13 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
   const [lensName, setLensName] = useState(null);
   const [lensMount, setLensMount] = useState(null);
   const [manufacturerName, setManufacturerName] = useState(null);
-  const [manualModeBool, setManualModeBool] = useState(null);
   const [apertureValueMin, setApertureValuesMin] = useState(null);
   const [apertureValueMax, setShutterSpeedMax] = useState(null);
 
 
 
-  const apertureValues=[{"title": "1.2"}, {"title": "1.4"}, {"title": "1.7"}, {"title": "1.8"}, {"title": "1.9"}, {"title": "2.0"}, {"title": "2.8"}, {"title": "3.5"}, {"title": "4.0"}, {"title": "5.6"}, {"title": "8.0"}, {"title": "11.0"}, {"title": "16.0"}, {"title": "22"}, {"title": "1/1000"}]
-  const trueFalseOptions = [{"title": "true"}, {"title": "false"}]
-
+  const apertureValues=[{"title": "1.2"}, {"title": "1.4"}, {"title": "1.7"}, {"title": "1.8"}, {"title": "1.9"}, {"title": "2.0"}, {"title": "2.8"}, {"title": "3.5"}, {"title": "4.0"}, {"title": "5.6"}, {"title": "8.0"}, {"title": "11.0"}, {"title": "16.0"}, {"title": "22"}]
+  const apertureValuesReversed = [...apertureValues].reverse();
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -44,7 +42,6 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
       lens_mount: { name: lensMount?.title},
       min_aperture: apertureValueMin? eval(apertureValueMin.title) : null,
       max_aperture:  apertureValueMax? eval(apertureValueMax.title) : null, 
-      manual: manualModeBool?.title,
     };
     console.log(data)
     const response = postToAPI('lenses', data)
@@ -64,9 +61,9 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
     setOpen(false);
   };
 
-
-  const manufacturerList = [...new Set(initialLenses.map(lens => lens.manufacturer_name))].map(title => ({title: title}))
-  const lensMountList = [...new Set(initialLenses.map(lens => lens.lens_mount))].map(title => ({title: title}))
+ 
+  const manufacturerList = initialLenses ? [...new Set(initialLenses.map(lens => lens.manufacturer_name))].map(title => ({title: title})) : []
+  const lensMountList =  initialLenses ? [...new Set(initialLenses.map(lens => lens.lens_mount))].map(title => ({title: title})) : []
   
   return (
     <Fragment>
@@ -110,18 +107,9 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
     {/* Row two */}
     <Box sx={{ flexGrow: 1  }}>
       <Grid container spacing={1}>
-      <Grid item xs>
-        <CreatableAutoComplete
-      availableOptions={trueFalseOptions}
-      value={manualModeBool}
-      setValue={setManualModeBool}
-      fieldTitle={"Manual Mode"}
-      disableAdd={true}
-      />
-        </Grid>
         <Grid item xs>
         <CreatableAutoComplete
-      availableOptions={apertureValues}
+      availableOptions={apertureValuesReversed}
       value={apertureValueMin}
       setValue={setApertureValuesMin}
       fieldTitle={"Min Aperture"}
@@ -131,7 +119,7 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
 
         <Grid item xs>
         <CreatableAutoComplete
-      availableOptions={apertureValues.reverse()}
+      availableOptions={apertureValues}
       value={apertureValueMax}
       setValue={setShutterSpeedMax}
       fieldTitle={"Max Aperture"}

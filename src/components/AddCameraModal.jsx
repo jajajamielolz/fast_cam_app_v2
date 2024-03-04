@@ -30,6 +30,8 @@ export default function AddCameraModal({setCameras, initialCameras, setUpdate}) 
 
 
   const shutterSpeeds=[{"title": "15"}, {"title": "8"}, {"title": "4"}, {"title": "2"}, {"title": "1"}, {"title": "1/2"}, {"title": "1/4"}, {"title": "1/8"}, {"title": "1/15"}, {"title": "1/30"}, {"title": "1/60"}, {"title": "1/125"}, {"title": "1/250"}, {"title": "1/500"}, {"title": "1/1000"}, {"title": "1/2000" }]
+  const shutterSpeedsReversed = [...shutterSpeeds].reverse();
+
   const trueFalseOptions = [{"title": "true"}, {"title": "false"}]
 
   const handleClickOpen = () => {
@@ -142,7 +144,7 @@ export default function AddCameraModal({setCameras, initialCameras, setUpdate}) 
 
         <Grid item xs>
         <CreatableAutoComplete
-      availableOptions={shutterSpeeds.reverse()}
+      availableOptions={shutterSpeedsReversed}
       value={shutterSpeedMax}
       setValue={setShutterSpeedMax}
       fieldTitle={"Max Shutter Speed"}

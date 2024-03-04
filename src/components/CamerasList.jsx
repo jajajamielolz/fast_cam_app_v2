@@ -1,23 +1,29 @@
 import React from 'react'
 import CameraFullFeatureCrudGrid from './CameraFullFeatureCrudGrid'
 import {getGridNumericOperators} from '@mui/x-data-grid'
+var Fraction = require('fractional').Fraction
 const SHUTTER_SPEEDS=[15, 8, 4, 2, 1, 1/2, 1/4, 1/8, 1/15, 1/30, 1/60, 1/125, 1/250, 1/500, 1/1000, 1/2000]
 
 const CamerasList = ({cameraList, camerasLoading, setCamerasLoading}) => {
 
+  if (!camerasLoading) {
+    console.log(cameraList)
+    cameraList.forEach(cam => {
+      var maxShutterSpeedStr = new Fraction(cam.max_shutter_speed).toString();
+      var minShutterSpeedStr = new Fraction(cam.min_shutter_speed).toString();
+      cam.max_shutter_speed = maxShutterSpeedStr
+      cam.min_shutter_speed = minShutterSpeedStr
+      });
 
-    if (!camerasLoading) {
-      console.log(cameraList)
-
-      return (
-      <div>
-    <CameraFullFeatureCrudGrid
-    initialRows={cameraList}
-    tableColumns={tableColumns}
-    setUpdate={setCamerasLoading}
-    />
-    </div>
-  )}
+    return (
+    <div>
+  <CameraFullFeatureCrudGrid
+  initialRows={cameraList}
+  tableColumns={tableColumns}
+  setUpdate={setCamerasLoading}
+  />
+  </div>
+)}
 
 }
 
