@@ -28,6 +28,15 @@ const CamerasList = ({cameraList, camerasLoading, setCamerasLoading}) => {
 }
 
 const tableColumns =  [
+  {
+    field: 'manufacturer_name',
+    headerName: 'Manufacturer',
+    width: 110,
+    editable: false,
+    // could add this in if I wanted to be able to select and quick change the value ?
+    // type: 'singleSelect',
+    // valueOptions: ['Market', 'Finance', 'Development'],
+  },
   { field: 'name', headerName: 'Camera Name', width: 180, editable: true },
 {
   field: 'lens_mount',
@@ -36,15 +45,6 @@ const tableColumns =  [
   align: 'left',
   headerAlign: 'left',
   editable: false,
-},
-{
-  field: 'manufacturer_name',
-  headerName: 'Manufacturer',
-  width: 110,
-  editable: false,
-  // could add this in if I wanted to be able to select and quick change the value ?
-  // type: 'singleSelect',
-  // valueOptions: ['Market', 'Finance', 'Development'],
 },
 {
   field: 'min_shutter_speed',

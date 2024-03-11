@@ -81,6 +81,14 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
     {/* Row one */}
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
+      <Grid item xs>
+        <CreatableAutoComplete
+      availableOptions={manufacturerList}
+      value={manufacturerName}
+      setValue={setManufacturerName}
+      fieldTitle={"Manufacturer"}
+      />
+        </Grid>
         <Grid item xs>
         <CreatableAutoComplete
       availableOptions={null}
@@ -89,14 +97,6 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
       fieldTitle={"Name"}
       />
               </Grid>
-        <Grid item xs>
-        <CreatableAutoComplete
-      availableOptions={manufacturerList}
-      value={manufacturerName}
-      setValue={setManufacturerName}
-      fieldTitle={"Manufacturer"}
-      />
-        </Grid>
         <Grid item xs>
         <CreatableAutoComplete
       availableOptions={lensMountList}

@@ -91,6 +91,14 @@ export default function AddCameraModal({setCameras, initialCameras, setUpdate}) 
     {/* Row one */}
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
+      <Grid item xs>
+        <CreatableAutoComplete
+      availableOptions={manufacturerList}
+      value={manufacturerName}
+      setValue={setManufacturerName}
+      fieldTitle={"Manufacturer"}
+      />
+        </Grid>
         <Grid item xs>
         <CreatableAutoComplete
       availableOptions={null}
@@ -99,14 +107,6 @@ export default function AddCameraModal({setCameras, initialCameras, setUpdate}) 
       fieldTitle={"Name"}
       />
               </Grid>
-        <Grid item xs>
-        <CreatableAutoComplete
-      availableOptions={manufacturerList}
-      value={manufacturerName}
-      setValue={setManufacturerName}
-      fieldTitle={"Manufacturer"}
-      />
-        </Grid>
         <Grid item xs>
         <CreatableAutoComplete
       availableOptions={lensMountList}
