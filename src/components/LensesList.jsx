@@ -2,7 +2,6 @@ import React from 'react'
 import LensFullFeatureCrudGrid from './LensFullFeatureCrudGrid'
 import {getGridNumericOperators} from '@mui/x-data-grid'
 const APERTURE_VALUES=[1.2, 1.4, 1.7, 1.9, 2.0, 2.8, 3.5, 4.0, 5.6, 8.0, 11.0, 16.0, 22.0]
-
 const LensesList = ({lensList, lensesLoading, setLensesLoading}) => {
 
 
@@ -56,6 +55,14 @@ const tableColumns =  [
   editable: true,
   type: 'singleSelect',
   valueOptions: APERTURE_VALUES.reverse(),
+  filterOperators: getGridNumericOperators()
+},
+{
+  field: 'min_focal_length',
+  headerName: 'Focal Length',
+  width: 110,
+  editable: true,
+  type: 'float',
   filterOperators: getGridNumericOperators()
 },
 

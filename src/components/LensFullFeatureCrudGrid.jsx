@@ -105,6 +105,7 @@ export default function LensFullFeatureCrudGrid({initialRows, tableColumns, setU
       name: newRow?.name,
       min_aperture: newRow?.min_aperture,
       max_aperture: newRow?.max_aperture,
+      min_focal_length: newRow?.min_focal_length,
     };
 
     patchToAPI(`lenses`, newRow.uuid, data)

@@ -21,10 +21,12 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
   const [manufacturerName, setManufacturerName] = useState(null);
   const [apertureValueMin, setApertureValuesMin] = useState(null);
   const [apertureValueMax, setShutterSpeedMax] = useState(null);
+  const [focalLengthMin, setFocalLengthMin] = useState(null);
 
 
 
   const apertureValues=[{"title": "1.2"}, {"title": "1.4"}, {"title": "1.7"}, {"title": "1.8"}, {"title": "1.9"}, {"title": "2.0"}, {"title": "2.8"}, {"title": "3.5"}, {"title": "4.0"}, {"title": "5.6"}, {"title": "8.0"}, {"title": "11.0"}, {"title": "16.0"}, {"title": "22"}]
+  const defaultFocalLengths=[{"title": "28"}, {"title": "35"}, {"title": "50"}, {"title": "55"}, {"title": "135"}, {"title": "200"}]
   const apertureValuesReversed = [...apertureValues].reverse();
   const handleClickOpen = () => {
     setOpen(true);
@@ -42,6 +44,7 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
       lens_mount: { name: lensMount?.title},
       min_aperture: apertureValueMin? eval(apertureValueMin.title) : null,
       max_aperture:  apertureValueMax? eval(apertureValueMax.title) : null, 
+      min_focal_length: focalLengthMin? eval(focalLengthMin.title) : null,
     };
     console.log(data)
     const response = postToAPI('lenses', data)
@@ -52,7 +55,8 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
         "id": result.data.uuid,
         "name": result.data.name,
         "lens_mount": result.data.lens_mount.name,
-        "manufacturer_name": result.data.manufacturer.name 
+        "manufacturer_name": result.data.manufacturer.name,
+        "min_focal_length": result.data.min_focal_length,
 
       }
       setLenses((oldRows) => [{ ...newRow,  isNew: true }, ...oldRows]);
@@ -117,12 +121,21 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
               </Grid>
       
 
-        <Grid item xs>
+              <Grid item xs>
         <CreatableAutoComplete
       availableOptions={apertureValues}
       value={apertureValueMax}
       setValue={setShutterSpeedMax}
       fieldTitle={"Max Aperture"}
+      />
+        </Grid>
+
+        <Grid item xs>
+        <CreatableAutoComplete
+      availableOptions={defaultFocalLengths}
+      value={focalLengthMin}
+      setValue={setFocalLengthMin}
+      fieldTitle={"Focal Length"}
       />
         </Grid>
         
