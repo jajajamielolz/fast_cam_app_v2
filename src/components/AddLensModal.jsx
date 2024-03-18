@@ -12,7 +12,7 @@ import Box from '@mui/material/Box';
 
 
 
-export default function AddLensModal({setLenses, initialLenses, setUpdate}) { 
+export default function AddLensModal({setLenses, initialLenses, setUpdate, initialCamRows}) { 
 
 
   const [open, setOpen] = useState(false);
@@ -46,7 +46,7 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
       max_aperture:  apertureValueMax? eval(apertureValueMax.title) : null, 
       min_focal_length: focalLengthMin? eval(focalLengthMin.title) : null,
     };
-    console.log(data)
+    // console.log(data)
     const response = postToAPI('lenses', data)
 
     response.then(function(result) {
@@ -68,6 +68,24 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
  
   const manufacturerList = initialLenses ? [...new Set(initialLenses.map(lens => lens.manufacturer_name))].map(title => ({title: title})) : []
   const lensMountList =  initialLenses ? [...new Set(initialLenses.map(lens => lens.lens_mount))].map(title => ({title: title})) : []
+
+  // adding cam manufacuter/mounts to lens manufacturer
+  if (initialCamRows){
+    const manufacturerLensList = [...new Set(initialCamRows.map(lens => lens.manufacturer_name))].map(title => ({title: title}))
+    const mountLensList = [...new Set(initialCamRows.map(lens => lens.lens_mount))].map(title => ({title: title}))
+
+    var mans = new Set(manufacturerList.map(d => d.title));
+    var mounts = new Set(lensMountList.map(d => d.title));
+
+    var mergedManufacturers = [...manufacturerList, ...manufacturerLensList.filter(d => !mans.has(d.title))];
+    var mergedMounts = [...lensMountList, ...mountLensList.filter(d => !mounts.has(d.title))];
+
+
+  }else {
+    var mergedManufacturers = manufacturerList
+    var mergedMounts = lensMountList
+  }
+
   
   return (
     <Fragment>
@@ -83,7 +101,7 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
       <Grid container spacing={1}>
       <Grid item xs>
         <CreatableAutoComplete
-      availableOptions={manufacturerList}
+      availableOptions={mergedManufacturers}
       value={manufacturerName}
       setValue={setManufacturerName}
       fieldTitle={"Manufacturer"}
@@ -99,7 +117,7 @@ export default function AddLensModal({setLenses, initialLenses, setUpdate}) {
               </Grid>
         <Grid item xs>
         <CreatableAutoComplete
-      availableOptions={lensMountList}
+      availableOptions={mergedMounts}
       value={lensMount}
       setValue={setLensMount}
       fieldTitle={"Lens Mount"}

@@ -41,7 +41,7 @@ const randomRole = () => {
 
 function EditToolbar(props) {
 
-  const { setRows, setRowModesModel, initialRows, setUpdate} = props;
+  const { setRows, setRowModesModel, initialRows, setUpdate, initialCamRows} = props;
 
   const handleClick = () => {
     const id = randomId();
@@ -54,13 +54,13 @@ function EditToolbar(props) {
 
   return (
     <GridToolbarContainer>
-      <AddLensModal setLenses={setRows} initialLenses={initialRows} setUpdate={setUpdate}/>
+      <AddLensModal setLenses={setRows} initialLenses={initialRows} setUpdate={setUpdate} initialCamRows={initialCamRows}/>
     </GridToolbarContainer>
   );
 }
 
 
-export default function LensFullFeatureCrudGrid({initialRows, tableColumns, setUpdate}) {
+export default function LensFullFeatureCrudGrid({initialRows, tableColumns, setUpdate, initialCamRows}) {
   const [rows, setRows] = React.useState(initialRows);
   const [rowModesModel, setRowModesModel] = React.useState({});
 
@@ -98,7 +98,7 @@ export default function LensFullFeatureCrudGrid({initialRows, tableColumns, setU
 
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
-    console.log(newRow)
+    // console.log(newRow)
     // TODO: add all new fields here to be updated accordingly
 
     const data = {
@@ -193,7 +193,7 @@ export default function LensFullFeatureCrudGrid({initialRows, tableColumns, setU
           toolbar: EditToolbar,          
         }}
         slotProps={{
-          toolbar: { setRows, setRowModesModel, initialRows, setUpdate },
+          toolbar: { setRows, setRowModesModel, initialRows, setUpdate, initialCamRows},
         }}
       />
     </Box>
