@@ -1,6 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import {CAMERA_IMAGE_MAP} from '../lib/camera_images';
+import {CAMERA_IMAGE_MAP} from '../../lib/camera_images';
 
 const useStyles = makeStyles(() => ({
   displayCard: {
