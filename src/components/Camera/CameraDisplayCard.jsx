@@ -4,8 +4,8 @@ import {CAMERA_IMAGE_MAP} from '../../lib/camera_images';
 
 const useStyles = makeStyles(() => ({
   displayCard: {
-    height: '200px',
-    width: '200px',
+    // height: '200px',
+    // width: '200px',
     borderColor: 'rgba(194,201,209, 0.5)',
     border: '1px solid',
     backgroundColor: 'white',
@@ -34,7 +34,8 @@ const useStyles = makeStyles(() => ({
     color: 'rgba(0, 44, 62, 1)',
   },
   displayImage: {
-    height: '150px'
+    // height: '150px'
+    maxHeight: '300px'
   },
   mountText: {
     fontFamily: 'Source Sans Pro',
