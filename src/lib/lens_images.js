@@ -1,5 +1,15 @@
 export const LENS_IMAGE_MAP = {
-    planar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Planar_lenses_7050.jpg/440px-Planar_lenses_7050.jpg',
-    sonnar: 'https://radojuva.com/wp-content/uploads/2014/05/carl-zeiss-sonnar-2-8-135-t-c-y-test-1.jpg',
-    "SMC Pentax-M" : 'https://radojuva.com/wp-content/uploads/2022/01/smc-pentax-m-12-50-mm-asahi-optical-co-lens-review-3.jpg'
+    "Planar": 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Planar_lenses_7050.jpg/440px-Planar_lenses_7050.jpg',
+    "Sonnar": 'https://radojuva.com/wp-content/uploads/2014/05/carl-zeiss-sonnar-2-8-135-t-c-y-test-1.jpg',
+    "SMC Pentax-M" : 'https://radojuva.com/wp-content/uploads/2022/01/smc-pentax-m-12-50-mm-asahi-optical-co-lens-review-3.jpg',
+    "Series E 50": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Nikon_Series_E_50mm_f1.8.jpg/1600px-Nikon_Series_E_50mm_f1.8.jpg?20091025181344",
+    "Series E 100": "https://imaging.nikon.com/imaging/information/story/0080/img/main.jpg",
+    "MC Tele-Auto": "http://forum.mflenses.com/userpix/20163/6109_DSC04018_1.jpg",
+    "YS": "https://www.pentaxforums.com/userreviews/data/88/DSC04005a.jpg",
+    "SMC Pentax Fish-Eye": "https://www.pentaxforums.com/lensreviews/data/19/Fish-Eye-Takumar-17mm-F4.jpg",
+    "Nikkor 20": "https://richardhaw.com/wp-content/uploads/2021/07/img_4706.jpg",
+    "Zuiko Auto-S": "https://www.imaging-resource.com/reviews/data/14/zolympus50f18om.jpg?44",
+    "MC Close Focus Wide Angle": "https://radojuva.com/wp-content/uploads/2019/01/vivitar-28mm-f2-lens-review.jpg",
+    "Nikkor 50": "https://photographylife.com/cdn-cgi/imagedelivery/GrQZt6ZFhE4jsKqjDEtqRA/photographylife.com/2013/11/Nikon-50mm-f1.2-AiS.jpg/w=500",
+    "Distagon": "https://www.pentaxforums.com/userreviews/data/106/IMGP0623.jpg",
 }

@@ -7,4 +7,8 @@ export const CAMERA_IMAGE_MAP = {
     'MV': 'http://farm5.static.flickr.com/4108/4962947160_b556fd786c.jpg',
     'K1000': 'http://farm3.staticflickr.com/2298/2425504149_cd5338b33c_m.jpg',
     'KM': 'http://farm6.static.flickr.com/5050/5206954660_eb84dc9cc1.jpg',
+    "Spotmatic F": "https://www.35mmc.com/wp-content/uploads/2023/09/DSC03289c12x-1024x683.jpg",
+    "ME Super": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Vintage_Pentax_ME_Super_35mm_SLR_Film_Camera%2C_Made_In_Japan%2C_Produced_Between_1979_And_1984%2C_Lens_-_SMC_Pentax-M_50mm_%2824185119650%29.jpg/600px-Vintage_Pentax_ME_Super_35mm_SLR_Film_Camera%2C_Made_In_Japan%2C_Produced_Between_1979_And_1984%2C_Lens_-_SMC_Pentax-M_50mm_%2824185119650%29.jpg",
+    "OM 10": "https://oldcamera.blog/wp-content/uploads/2012/03/img_1104.jpg?w=512",
+    "FX-3 Super": "http://farm5.static.flickr.com/4096/4739456910_9c827ee3e8.jpg",
 }
