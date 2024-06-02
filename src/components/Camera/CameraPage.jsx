@@ -21,9 +21,9 @@ const CameraPage = () => {
 
   useEffect(() => {
     setLensItemsList(null);
-    const lensMountUUID = activeCamera?.lens_mount?.uuid
-    if (lensMountUUID){
-        fetchFromAPI(`lenses?lens_mount_uuid=${lensMountUUID}`)
+    const lensMountName = activeCamera?.lens_mount?.name
+    if (lensMountName){
+        fetchFromAPI(`lenses?lens_mount_name=${lensMountName}`)
         .then((data) => {
         setLensItemsList(data)
         setLensesLoading(false)})
@@ -31,8 +31,7 @@ const CameraPage = () => {
       }, [cameraLoading]);
       
       if (!cameraLoading && !lensesLoading) {
-        console.log(lensItemsList)
-        console.log(activeCamera)
+
   return (
     <div>
         <CameraDisplayCard lensMount={activeCamera?.lens_mount?.name} manufacturer={activeCamera?.manufacturer.name} modelName={activeCamera?.name}></CameraDisplayCard>

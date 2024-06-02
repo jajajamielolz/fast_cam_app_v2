@@ -64,7 +64,7 @@ const Carousel = ({displayItems, carouselIconSource, displayType}) => {
   const [currentProgressNumber, setCurrentProgressNumber] = useState(activeDisplaySize);
   const [showNextButton, setShowNextButton] = useState(true);
   const [showPreviousButton, setShowPreviousButton] = useState(false);
-  const [activeDisplayItems, setActiveDisplayItems] = useState([displayItems?.slice(0, activeDisplaySize)]);
+  const [activeDisplayItems, setActiveDisplayItems] = useState(displayItems?.slice(0, activeDisplaySize));
 
 
   const handleClickNext = () => {
@@ -96,7 +96,6 @@ const Carousel = ({displayItems, carouselIconSource, displayType}) => {
   const displayItemCards =
     activeDisplayItems?.length > 0
       ? activeDisplayItems.map((displayedItem) => {
-        console.log(displayedItem?.name)
         const carouselCards = displayType==='Lenses' ? <LensDisplayCard
         key={displayedItem?.uuid}
         manufacturer={displayedItem?.manufacturer?.name}
@@ -119,7 +118,7 @@ const Carousel = ({displayItems, carouselIconSource, displayType}) => {
         })
       : [null];
 
-
+  console.log(activeDisplayItems)
   return (
     <div>
       <div className={classes.carouselHeader}>

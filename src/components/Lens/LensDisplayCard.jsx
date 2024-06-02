@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
   },
   manufacturerText: {
     fontFamily: 'Source Sans Pro',
-    color: 'rgba(0, 44, 62, 0.5)',
+    color: 'rgba(0, 44, 62, 0.7)',
     marginRight: '4px'
   },
   modelText: {
@@ -50,7 +50,7 @@ const useStyles = makeStyles(() => ({
   },
   apertureText: {
     fontFamily: 'Source Sans Pro',
-    color: 'rgba(0, 44, 62, 0.5)',
+    color: 'rgba(217, 17, 17, 1)',
 
   }
 }));
