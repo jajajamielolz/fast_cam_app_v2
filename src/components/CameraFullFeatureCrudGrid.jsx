@@ -2,12 +2,13 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
 import { deleteFromAPI } from '../utils/deleteFromAPI'
 import {patchToAPI } from '../utils/patchToAPI'
 import AddCameraModal from './AddCameraModal'
-
+import { useNavigate } from "react-router-dom";
 
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
@@ -84,6 +85,12 @@ export default function CameraFullFeatureCrudGrid({initialRows, tableColumns, se
     setRows(rows.filter((row) => row.uuid !== uuid));
   };
 
+  let navigate = useNavigate(); 
+  const handleOpenPageClick = (uuid) => () => {
+    const destination = '/camera/'+uuid
+    navigate(destination)
+  };
+
   const handleCancelClick = (id) => () => {
     setRowModesModel({
       ...rowModesModel,
@@ -158,6 +165,12 @@ export default function CameraFullFeatureCrudGrid({initialRows, tableColumns, se
             onClick={handleDeleteClick(id)}
             color="inherit"
           />,
+          <GridActionsCellItem
+          icon={<OpenInNewIcon />}
+          label="Oprn"
+          onClick={handleOpenPageClick(id)}
+          color="inherit"
+        />,
         ];
       },
     },

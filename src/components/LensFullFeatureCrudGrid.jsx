@@ -2,11 +2,13 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
 import { deleteFromAPI } from '../utils/deleteFromAPI'
 import {patchToAPI } from '../utils/patchToAPI'
 import AddLensModal from './AddLensModal'
+import { useNavigate } from "react-router-dom";
 
 
 import Button from '@mui/material/Button';
@@ -82,6 +84,12 @@ export default function LensFullFeatureCrudGrid({initialRows, tableColumns, setU
   const handleDeleteClick = (uuid) => () => {
     deleteFromAPI(`lenses`, uuid)
     setRows(rows.filter((row) => row.uuid !== uuid));
+  };
+
+  let navigate = useNavigate(); 
+  const handleOpenPageClick = (uuid) => () => {
+    const destination = '/lens/'+uuid
+    navigate(destination)
   };
 
   const handleCancelClick = (id) => () => {
@@ -162,6 +170,12 @@ export default function LensFullFeatureCrudGrid({initialRows, tableColumns, setU
             onClick={handleDeleteClick(id)}
             color="inherit"
           />,
+          <GridActionsCellItem
+          icon={<OpenInNewIcon />}
+          label="Oprn"
+          onClick={handleOpenPageClick(id)}
+          color="inherit"
+        />,
         ];
       },
     },
