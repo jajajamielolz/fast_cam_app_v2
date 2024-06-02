@@ -61,8 +61,9 @@ const useStyles = makeStyles(() => ({
 const Carousel = ({displayItems, carouselIconSource, displayType}) => {
   const classes = useStyles();
   const activeDisplaySize = 3;
-  const [currentProgressNumber, setCurrentProgressNumber] = useState(activeDisplaySize);
-  const [showNextButton, setShowNextButton] = useState(true);
+  const progressStartNumber = activeDisplaySize <= displayItems?.length ? activeDisplaySize : displayItems?.length
+  const [currentProgressNumber, setCurrentProgressNumber] = useState(progressStartNumber);
+  const [showNextButton, setShowNextButton] = useState(progressStartNumber >=activeDisplaySize);
   const [showPreviousButton, setShowPreviousButton] = useState(false);
   const [activeDisplayItems, setActiveDisplayItems] = useState(displayItems?.slice(0, activeDisplaySize));
 
@@ -86,7 +87,7 @@ const Carousel = ({displayItems, carouselIconSource, displayType}) => {
     setActiveDisplayItems(displayItems?.slice(currentProgressNumber - activeDisplaySize, currentProgressNumber))
 } else {
    
-    setCurrentProgressNumber(activeDisplaySize)
+    setCurrentProgressNumber(progressStartNumber)
     setActiveDisplayItems(displayItems?.slice(0, activeDisplaySize));
     setShowPreviousButton(false)
 }
