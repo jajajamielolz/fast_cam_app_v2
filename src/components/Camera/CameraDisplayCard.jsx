@@ -1,6 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {CAMERA_IMAGE_MAP} from '../../lib/camera_images';
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles(() => ({
   displayCard: {
@@ -8,6 +9,7 @@ const useStyles = makeStyles(() => ({
     // width: '200px',
     height: props => props.previewSize ? '200px' : null,
     width: props => props.previewSize ? '200px' : null,
+    cursor: props => props.previewSize ? 'pointer' : null,
     borderColor: 'rgba(194,201,209, 0.5)',
     border: '1px solid',
     backgroundColor: 'white',
@@ -48,17 +50,22 @@ const useStyles = makeStyles(() => ({
 }));
 
 
-const CameraDisplayCard = ({manufacturer, modelName, lensMount, previewSize=false}) => {
+const CameraDisplayCard = ({manufacturer, modelName, lensMount, uuid, previewSize=false}) => {
   const classes = useStyles({previewSize});
-
-
   const defaultImgURL = 'https://cdn2.iconfinder.com/data/icons/camera-56/48/23_questionmark_ask_camera_photo_mobile_phone_video-1024.png'
   const displayImgURL = CAMERA_IMAGE_MAP.hasOwnProperty(modelName) ? CAMERA_IMAGE_MAP[modelName] : defaultImgURL
   const displayImgAlt = 'img-'+manufacturer+modelName
+  let navigate = useNavigate(); 
+
+  const handleClickButton = () => {
+    const destination = '/camera/'+uuid
+    navigate(destination)
+  };
+
 
 
   return (
-      <div className={classes.displayCard}>
+      <button className={classes.displayCard} onClick={handleClickButton}>
         <div className={classes.displayHeader}>
             <div className={classes.manufacturerText}>{manufacturer}</div>
             <div className={classes.modelText}>{modelName}</div>
@@ -67,7 +74,7 @@ const CameraDisplayCard = ({manufacturer, modelName, lensMount, previewSize=fals
         <div className={classes.mountText}>
         {lensMount}
         </div>
-      </div>
+      </button>
   );
 };
 

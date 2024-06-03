@@ -99,6 +99,7 @@ const Carousel = ({displayItems, carouselIconSource, displayType}) => {
       ? activeDisplayItems.map((displayedItem) => {
         const carouselCards = displayType==='Lenses' ? <LensDisplayCard
         key={displayedItem?.uuid}
+        uuid={displayedItem?.uuid}
         manufacturer={displayedItem?.manufacturer?.name}
         modelName={displayedItem?.name}
         lensMount={displayedItem?.lens_mount?.name} 
@@ -112,6 +113,7 @@ const Carousel = ({displayItems, carouselIconSource, displayType}) => {
         modelName={displayedItem?.name} 
         lensMount ={displayedItem?.lens_mount?.name}
         key={displayedItem?.uuid}
+        uuid={displayedItem?.uuid}
         previewSize={true}
         ></CameraDisplayCard>
 

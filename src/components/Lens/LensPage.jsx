@@ -80,7 +80,7 @@ const LensPage = () => {
       </div>
       <div className={classes.carouselContainer}>
         <div className={classes.carousel}>
-          <Carousel displayItems={camerasItemsList} carouselIconSource={ICON_LINKS.carouselIconSourceLens} displayType={'Cameras'}/>
+          <Carousel displayItems={camerasItemsList} carouselIconSource={ICON_LINKS.carouselIconSourceCamera} displayType={'Cameras'}/>
         </div>
       </div>
     </div>
