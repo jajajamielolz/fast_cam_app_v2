@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(() => ({
   displayCard: {
-    height: '200px',
-    width: '200px',
+    height: props => props.previewSize ? '200px' : null,
+    width: props => props.previewSize ? '200px' : null,
     borderColor: 'rgba(194,201,209, 0.5)',
     border: '1px solid',
     backgroundColor: 'white',
@@ -36,7 +36,8 @@ const useStyles = makeStyles(() => ({
     color: 'rgba(0, 44, 62, 1)',
   },
   displayImage: {
-    height: '150px'
+    height: props => props.previewSize ? '150px' : '300px',
+
   },
   mountText: {
     visibility: (props) => props.hideMount ? 'hidden' : 'visible',
@@ -56,10 +57,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 
-const LensDisplayCard = ({manufacturer, modelName, lensMount, focalLength, minAperture, maxAperture, hideMount=false}) => {
-  const classes = useStyles({hideMount});
-
-
+const LensDisplayCard = ({manufacturer, modelName, lensMount, focalLength, minAperture, maxAperture, hideMount=false, previewSize=false}) => {
+  const classes = useStyles({hideMount, previewSize});
   const defaultImgURL = 'https://icons.veryicon.com/png/o/internet--web/digital-equipment-topics/camera-lens-1.png'
   const displayImgURL = LENS_IMAGE_MAP.hasOwnProperty(modelName) ? LENS_IMAGE_MAP[modelName] : defaultImgURL
   const displayImgAlt = 'img-'+manufacturer+modelName
@@ -73,7 +72,7 @@ const LensDisplayCard = ({manufacturer, modelName, lensMount, focalLength, minAp
         </div>
         <img src={displayImgURL} alt={displayImgAlt} className={classes.displayImage}></img>
         <div className={classes.mountText}>
-        {lensMount}
+        Mount: {lensMount}
         </div>
         <div className={classes.lensInfoContainer}>
           <div className={classes.apertureText}>

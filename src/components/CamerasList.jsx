@@ -7,7 +7,6 @@ const SHUTTER_SPEEDS=[15, 8, 4, 2, 1, 1/2, 1/4, 1/8, 1/15, 1/30, 1/60, 1/125, 1/
 const CamerasList = ({cameraList, camerasLoading, setCamerasLoading, lensList}) => {
 
   if (!camerasLoading && cameraList) {
-    console.log(cameraList)
     cameraList.forEach(cam => {
       var maxShutterSpeedStr = new Fraction(cam.max_shutter_speed).toString();
       var minShutterSpeedStr = new Fraction(cam.min_shutter_speed).toString();

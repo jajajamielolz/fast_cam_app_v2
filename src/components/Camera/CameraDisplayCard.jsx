@@ -6,6 +6,8 @@ const useStyles = makeStyles(() => ({
   displayCard: {
     // height: '200px',
     // width: '200px',
+    height: props => props.previewSize ? '200px' : null,
+    width: props => props.previewSize ? '200px' : null,
     borderColor: 'rgba(194,201,209, 0.5)',
     border: '1px solid',
     backgroundColor: 'white',
@@ -35,7 +37,8 @@ const useStyles = makeStyles(() => ({
   },
   displayImage: {
     // height: '150px'
-    maxHeight: '300px'
+    height: props => props.previewSize ? '150px' : '300px',
+
   },
   mountText: {
     fontFamily: 'Source Sans Pro',
@@ -45,8 +48,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 
-const CameraDisplayCard = ({manufacturer, modelName, lensMount}) => {
-  const classes = useStyles();
+const CameraDisplayCard = ({manufacturer, modelName, lensMount, previewSize=false}) => {
+  const classes = useStyles({previewSize});
 
 
   const defaultImgURL = 'https://cdn2.iconfinder.com/data/icons/camera-56/48/23_questionmark_ask_camera_photo_mobile_phone_video-1024.png'

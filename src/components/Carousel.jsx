@@ -106,11 +106,13 @@ const Carousel = ({displayItems, carouselIconSource, displayType}) => {
         minAperture={displayedItem?.max_aperture} 
         maxAperture={displayedItem?.min_aperture} 
         hideMount={true}
+        previewSize={true}
         ></LensDisplayCard> : <CameraDisplayCard
         manufacturer={displayedItem?.manufacturer?.name} 
         modelName={displayedItem?.name} 
         lensMount ={displayedItem?.lens_mount?.name}
         key={displayedItem?.uuid}
+        previewSize={true}
         ></CameraDisplayCard>
 
           return (
