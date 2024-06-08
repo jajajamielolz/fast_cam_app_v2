@@ -64,7 +64,7 @@ const LensPage = () => {
         setCamerasItemsList(data)
         setCamerasLoading(false)})
     }
-      }, [lensLoading]);
+      }, [lensLoading, activeLens]);
       
       if (!lensLoading && !camerasLoading) {
 
@@ -75,7 +75,6 @@ const LensPage = () => {
           <LensDisplayCard hideMount={false} lensMount={activeLens?.lens_mount?.name} manufacturer={activeLens?.manufacturer.name} modelName={activeLens?.name} minAperture={activeLens?.min_aperture} maxAperture={activeLens?.max_aperture}></LensDisplayCard>
         </div>
         <div className={classes.metadataCardContainer}>
-          TODO: put lens metadata card here
         </div>
       </div>
       <div className={classes.carouselContainer}>

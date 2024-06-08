@@ -4,6 +4,7 @@ import CamerasPage from './components/CamerasPage'
 import LensPage from './components/Lens/LensPage'
 import CameraPage from './components/Camera/CameraPage'
 import LensesPage from './components/LensesPage'
+import DashboardPage from './components/DashboardPage'
 
 import NavBar from './components/NavBar'
 
@@ -16,10 +17,11 @@ function App() {
     <BrowserRouter>
           <NavBar></NavBar>
             <Routes>
-                <Route path="/" exact element={<CamerasPage />} />
-                <Route path="/camera/:uuid" element={<CameraPage></CameraPage>} />                
-                <Route path="/lens/:uuid" element={<LensPage></LensPage>} />                
-                <Route path="/lenses/" element={<LensesPage />} />                
+            <Route path="/" exact element={<DashboardPage />} />
+            <Route path="/cameras/" exact element={<CamerasPage />} />
+            <Route path="/camera/:uuid" element={<CameraPage></CameraPage>} />                
+            <Route path="/lens/:uuid" element={<LensPage></LensPage>} />                
+            <Route path="/lenses/" element={<LensesPage />} />                
             </Routes>
 
             

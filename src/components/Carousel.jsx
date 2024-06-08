@@ -58,7 +58,7 @@ const useStyles = makeStyles(() => ({
   cardContainer: {gap: '12px'},
 }));
 
-const Carousel = ({displayItems, carouselIconSource, displayType}) => {
+const Carousel = ({displayItems, carouselIconSource, displayType, titleText}) => {
   const classes = useStyles();
   const activeDisplaySize = 3;
   const progressStartNumber = activeDisplaySize <= displayItems?.length ? activeDisplaySize : displayItems?.length
@@ -124,13 +124,16 @@ const Carousel = ({displayItems, carouselIconSource, displayType}) => {
       : [null];
 
   console.log(activeDisplayItems)
+  
+  const defaultText = 'Compatible ' + displayType
+  
   return (
     <div>
       <div className={classes.carouselHeader}>
         <Grid container direction="row" className={classes.titleContainer}>
           <Avatar src={carouselIconSource} className={classes.avatar} alt={'Carousel Avatar'} />
           <Grid item className={classes.titleText}>
-            {'Compatible '}{displayType}
+            {titleText ? titleText : defaultText}
           </Grid>
         </Grid>
 

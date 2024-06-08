@@ -31,14 +31,19 @@ const useStyles = makeStyles(() => ({
   manufacturerText: {
     fontFamily: 'Source Sans Pro',
     color: 'rgba(0, 44, 62, 0.7)',
-    marginRight: '4px'
+    marginRight: '4px',
+    marginTop: '10px',
+
   },
   modelText: {
     fontFamily: 'Source Sans Pro',
     color: 'rgba(0, 44, 62, 1)',
+    marginTop: '10px',
+
   },
   displayImage: {
     height: props => props.previewSize ? '150px' : '300px',
+    width: '100%'
 
   },
   mountText: {

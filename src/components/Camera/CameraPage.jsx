@@ -36,7 +36,7 @@ const useStyles = makeStyles(() => ({
     borderColor: 'rgba(194,201,209, 0.5)',
     border: '2px solid',
     padding: '10px'
-  }
+  },
 
 }));
 
@@ -65,7 +65,7 @@ const CameraPage = () => {
         setLensItemsList(data)
         setLensesLoading(false)})
     }
-      }, [cameraLoading]);
+      }, [cameraLoading, activeCamera]);
       
       if (!cameraLoading && !lensesLoading) {
 

@@ -9,8 +9,8 @@ import CameraRoll from '@mui/icons-material/CameraRoll';
 import { useNavigate } from "react-router-dom";
 
 const yourPages = [
-    { text: 'Cameras', href: '/' },
-    { text: 'Lenses', href: '/lenses' }
+  { text: 'Cameras', href: '/cameras' },
+  { text: 'Lenses', href: '/lenses' }
   ]
 
 
@@ -20,10 +20,11 @@ function NavBar() {
 
     let navigate = useNavigate(); 
     // TODO: This navigation is disgusting ha ha ha
-  const handleCloseNavMenu = (event) => {
+  const handleClickNavMenu = (event) => {
+    console.log(event)
 
     if (event.clientX < 255)
-    {navigate('/');}
+    {navigate('/cameras');}
     else {
         navigate('/lenses')
     }
@@ -82,7 +83,7 @@ function NavBar() {
             {yourPages.map((page) => (
               <Button
                 key={page.text}
-                onClick={handleCloseNavMenu}
+                onClick={handleClickNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page.text}

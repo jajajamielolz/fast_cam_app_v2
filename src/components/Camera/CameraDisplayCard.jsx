@@ -40,6 +40,7 @@ const useStyles = makeStyles(() => ({
   displayImage: {
     // height: '150px'
     height: props => props.previewSize ? '150px' : '300px',
+    width: '100%'
 
   },
   mountText: {
