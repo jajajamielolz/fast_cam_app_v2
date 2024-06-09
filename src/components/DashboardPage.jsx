@@ -76,8 +76,6 @@ const DashboardPage = () => {
         setLensList(data?.map(v => ({...v, id: v?.uuid, manufacturer_name: v?.manufacturer?.name, lens_mount: v?.lens_mount?.name})));
         setLensesLoading(false)})
       }, [lensesLoading]);
-
-
       
   if (!camerasLoading && !lensesLoading) {
   return (
@@ -86,12 +84,13 @@ const DashboardPage = () => {
         <div className={classes.camerasAndLensesContainer}>
           <div className={classes.carouselContainer}>
             <div className={classes.carousel}>
-              <Carousel displayItems={cameraList} carouselIconSource={ICON_LINKS.carouselIconSourceCamera} displayType={'Cameras'} titleText={'Cameras'}/>
+
+              {cameraList && (<Carousel displayItems={cameraList} carouselIconSource={ICON_LINKS.carouselIconSourceCamera} displayType={'Cameras'} titleText={'Cameras'}/>)}
             </div>
           </div>
           <div className={classes.carouselContainer}>
             <div className={classes.carousel}>
-              <Carousel displayItems={lensList} carouselIconSource={ICON_LINKS.carouselIconSourceLens} displayType={'Lenses'} titleText={'Lenses'}/>
+              {lensList &&(<Carousel displayItems={lensList} carouselIconSource={ICON_LINKS.carouselIconSourceLens} displayType={'Lenses'} titleText={'Lenses'}/>)}
             </div>
           </div>
         </div>

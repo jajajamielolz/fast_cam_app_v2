@@ -11,4 +11,17 @@ export const CAMERA_IMAGE_MAP = {
     "ME Super": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Vintage_Pentax_ME_Super_35mm_SLR_Film_Camera%2C_Made_In_Japan%2C_Produced_Between_1979_And_1984%2C_Lens_-_SMC_Pentax-M_50mm_%2824185119650%29.jpg/600px-Vintage_Pentax_ME_Super_35mm_SLR_Film_Camera%2C_Made_In_Japan%2C_Produced_Between_1979_And_1984%2C_Lens_-_SMC_Pentax-M_50mm_%2824185119650%29.jpg",
     "OM 10": "https://oldcamera.blog/wp-content/uploads/2012/03/img_1104.jpg?w=512",
     "FX-3 Super": "http://farm5.static.flickr.com/4096/4739456910_9c827ee3e8.jpg",
+    "Bessamatic CS":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Bessamatic_CS.jpg/440px-Bessamatic_CS.jpg",
+    "Electro 35 GT":"http://farm8.staticflickr.com/7773/17534617535_60a08d3511_n.jpg",
+    "139Q":"https://i0.wp.com/kosmofoto.com/wp-content/uploads/2020/02/Contax1.jpg?w=1392&quality=89&ssl=1",
+    "EE2":"http://farm3.staticflickr.com/2671/3927384868_6dc0c16b34.jpg",
+    "Fv":"http://farm8.staticflickr.com/7202/6881112288_205dc754d6_n.jpg",
+    "A-1":"https://upload.wikimedia.org/wikipedia/en/f/f3/Canon-a1-top-web.jpg",
+    "SRT 201":"https://images.squarespace-cdn.com/content/v1/50f89597e4b0df5f0985004b/1530220337069-2FAZFM0ZQQQ65UDVTX6K/2018-05-30+-+R01+-+Kodak+TX%40400+-+Minolta+SRT-201+-+HC110%28H%29_008.jpg?format=1500w",
+    "ST-701":"http://farm6.staticflickr.com/5534/30478627654_c2877c2b5c.jpg",
+    "SRT 101":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Minolta_srt_101_IMGP3035_wp.jpg/600px-Minolta_srt_101_IMGP3035_wp.jpg",
+    "FT-1 Motor":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/76_105_Konica_Ft_1_Motor_%28152924675%29.jpeg/440px-76_105_Konica_Ft_1_Motor_%28152924675%29.jpeg",
+    "XG1":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Minolta_XG-1.JPG/600px-Minolta_XG-1.JPG",
+    "":"",
+
 }
