@@ -124,7 +124,6 @@ const Carousel = ({displayItems, carouselIconSource, displayType, titleText}) =>
         })
       : [null];
 
-  console.log(activeDisplayItems)
   
   const defaultText = 'Compatible ' + displayType
   

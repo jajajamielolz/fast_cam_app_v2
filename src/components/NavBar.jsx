@@ -21,7 +21,6 @@ function NavBar() {
     let navigate = useNavigate(); 
     // TODO: This navigation is disgusting ha ha ha
   const handleClickNavMenu = (event) => {
-    console.log(event)
 
     if (event.clientX < 255)
     {navigate('/cameras');}

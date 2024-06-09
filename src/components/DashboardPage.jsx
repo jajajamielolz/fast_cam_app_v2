@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import CamerasList from './CamerasList'
 import { fetchFromAPI } from '../utils/fetchFromAPI'
+import FavoritesContainer from './Favorites/FavoritesContainer';
 import {makeStyles} from '@material-ui/core/styles';
 import Carousel from './Carousel';
 import {ICON_LINKS} from '../static/icons/icon_links'
+
 const useStyles = makeStyles(() => ({
 
   carouselContainer: {
@@ -19,6 +20,26 @@ const useStyles = makeStyles(() => ({
     border: '2px solid',
     padding: '10px'
   },
+  camerasAndLensesContainer: {
+
+  },
+  camerasLensesAndFavsContainer: {
+    marginTop: '30px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  favoritesContainer: {
+    marginTop: '20px',
+    marginLeft: '50px'
+    // display: 'flex',
+    // marginTop: '20px',
+    // justifyContent: "center",
+    // borderRadius: '20px',
+    // borderColor: 'rgba(194,201,209, 0.5)',
+    // border: '2px solid',
+    // padding: '10px'
+  },
 
 }));
 
@@ -30,12 +51,22 @@ const DashboardPage = () => {
   const [lensList, setLensList] = useState([]);
   const [camerasLoading, setCamerasLoading] = useState(true);
   const [cameraList, setCameraList] = useState([]);
+  const [favoritesList, setFavoritesList] = useState([]);
   useEffect(() => {
       setCameraList(null);
       fetchFromAPI(`cameras`)
         .then((data) => {
-        setCameraList(data?.map(v => ({...v, id: v?.uuid, manufacturer_name: v?.manufacturer?.name, lens_mount: v?.lens_mount?.name})));
-        setCamerasLoading(false)})
+          const cams = data?.map(v => ({...v, id: v?.uuid, manufacturer_name: v?.manufacturer?.name, lens_mount: v?.lens_mount?.name}))
+          setCameraList(cams);
+
+          // USING SELF TIMER BOOL AS FAV BC LAZY
+          // displayedItem?.self_timer
+          const favs = cams.filter(function (fav) {
+            return fav?.self_timer
+          });
+          setFavoritesList(favs)
+
+          setCamerasLoading(false)})
       }, [camerasLoading]);
 
   useEffect(() => {
@@ -45,19 +76,29 @@ const DashboardPage = () => {
         setLensList(data?.map(v => ({...v, id: v?.uuid, manufacturer_name: v?.manufacturer?.name, lens_mount: v?.lens_mount?.name})));
         setLensesLoading(false)})
       }, [lensesLoading]);
+
+
       
-      if (!camerasLoading && !lensesLoading) {
+  if (!camerasLoading && !lensesLoading) {
   return (
     <div>
-      <div className={classes.carouselContainer}>
-        <div className={classes.carousel}>
-          <Carousel displayItems={cameraList} carouselIconSource={ICON_LINKS.carouselIconSourceCamera} displayType={'Cameras'} titleText={'Cameras'}/>
+      <div className={classes.camerasLensesAndFavsContainer}>
+        <div className={classes.camerasAndLensesContainer}>
+          <div className={classes.carouselContainer}>
+            <div className={classes.carousel}>
+              <Carousel displayItems={cameraList} carouselIconSource={ICON_LINKS.carouselIconSourceCamera} displayType={'Cameras'} titleText={'Cameras'}/>
+            </div>
+          </div>
+          <div className={classes.carouselContainer}>
+            <div className={classes.carousel}>
+              <Carousel displayItems={lensList} carouselIconSource={ICON_LINKS.carouselIconSourceLens} displayType={'Lenses'} titleText={'Lenses'}/>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className={classes.carouselContainer}>
-        <div className={classes.carousel}>
-          <Carousel displayItems={lensList} carouselIconSource={ICON_LINKS.carouselIconSourceLens} displayType={'Lenses'} titleText={'Lenses'}/>
-        </div>
+          <div className={classes.favoritesContainer}>
+            <FavoritesContainer displayItems={favoritesList} carouselIconSource='../static/icons/CamFavIcon.svg' displayType={'Cameras'} titleText={'Favorite Cameras'}/>
+          </div>
+        
       </div>
 
     </div>

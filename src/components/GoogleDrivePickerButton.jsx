@@ -29,8 +29,8 @@ const handleOpenPicker = () => {
       if (data.action === 'cancel') {
         console.log('User clicked cancel/close button')
       }
-      console.log(authResponse)
-      console.log(data)
+      // console.log(authResponse)
+      // console.log(data)
       const extracted = data?.docs?.[0]?.embedUrl
       setEmbedURL(extracted)
 

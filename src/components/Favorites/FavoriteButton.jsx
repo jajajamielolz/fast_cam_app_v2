@@ -38,10 +38,6 @@ const FavoriteButton = ({cameraUUID, isFavorited}) => {
   const hoverText = favorited ? 'Select to remove from favorites' : 'Select to add to favorites'
   const handleClickButton = (event) => {
     event.stopPropagation()
-     
-     console.log(cameraUUID)
-     console.log(favorited)
-    console.log('favorite Clicked!: ' )
 
     // USING SELF TIMER BOOL AS FAV BC LAZY
     const data = {
