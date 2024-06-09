@@ -4,7 +4,7 @@ import CameraDisplayCard from './CameraDisplayCard';
 import CameraMetadataCard from './CameraMetadataCard'
 import Carousel from '../Carousel';
 import {ICON_LINKS} from '../../static/icons/icon_links'
-
+import GoogleDrivePickerButton from '../GoogleDrivePickerButton.jsx';
 import {makeStyles} from '@material-ui/core/styles';
 
 
@@ -23,7 +23,10 @@ const useStyles = makeStyles(() => ({
     marginLeft: '20px'
   },
   displayCard: {
-  },
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column'
+      },
   carouselContainer: {
     justifyContent: 'center', 
     display: 'flex',
@@ -71,9 +74,11 @@ const CameraPage = () => {
 
   return (
     <div className={classes.page}>
+      
       <div className={classes.displayAndMetadataRow}>
         <div className={classes.displayCard} >
           <CameraDisplayCard lensMount={activeCamera?.lens_mount?.name} manufacturer={activeCamera?.manufacturer.name} modelName={activeCamera?.name} uuid={activeCamera?.uuid}></CameraDisplayCard>
+          <GoogleDrivePickerButton/>
         </div>
         <div className={classes.metadataCardContainer}>
           <CameraMetadataCard 
