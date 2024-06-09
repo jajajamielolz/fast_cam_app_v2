@@ -109,6 +109,7 @@ const Carousel = ({displayItems, carouselIconSource, displayType, titleText}) =>
         hideMount={true}
         previewSize={true}
         ></LensDisplayCard> : <CameraDisplayCard
+        isFavorited={displayedItem?.self_timer} // USING SELF TIMER BOOL AS FAV BC LAZY
         manufacturer={displayedItem?.manufacturer?.name} 
         modelName={displayedItem?.name} 
         lensMount ={displayedItem?.lens_mount?.name}

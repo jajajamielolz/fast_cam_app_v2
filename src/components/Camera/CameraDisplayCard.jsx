@@ -2,6 +2,7 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {CAMERA_IMAGE_MAP} from '../../lib/camera_images';
 import { useNavigate } from "react-router-dom";
+import FavoriteButton from '../Favorites/FavoriteButton';
 
 const useStyles = makeStyles(() => ({
   displayCard: {
@@ -51,7 +52,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 
-const CameraDisplayCard = ({manufacturer, modelName, lensMount, uuid, previewSize=false}) => {
+const CameraDisplayCard = ({manufacturer, modelName, lensMount, uuid, previewSize=false, isFavorited}) => {
   const classes = useStyles({previewSize});
   const defaultImgURL = 'https://cdn2.iconfinder.com/data/icons/camera-56/48/23_questionmark_ask_camera_photo_mobile_phone_video-1024.png'
   const displayImgURL = CAMERA_IMAGE_MAP.hasOwnProperty(modelName) ? CAMERA_IMAGE_MAP[modelName] : defaultImgURL
@@ -70,6 +71,8 @@ const CameraDisplayCard = ({manufacturer, modelName, lensMount, uuid, previewSiz
         <div className={classes.displayHeader}>
             <div className={classes.manufacturerText}>{manufacturer}</div>
             <div className={classes.modelText}>{modelName}</div>
+            <FavoriteButton cameraUUID={uuid} isFavorited={isFavorited}/>
+
         </div>
         <img src={displayImgURL} alt={displayImgAlt} className={classes.displayImage}></img>
         <div className={classes.mountText}>

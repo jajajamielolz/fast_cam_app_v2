@@ -77,7 +77,7 @@ const CameraPage = () => {
       
       <div className={classes.displayAndMetadataRow}>
         <div className={classes.displayCard} >
-          <CameraDisplayCard lensMount={activeCamera?.lens_mount?.name} manufacturer={activeCamera?.manufacturer.name} modelName={activeCamera?.name} uuid={activeCamera?.uuid}></CameraDisplayCard>
+          <CameraDisplayCard lensMount={activeCamera?.lens_mount?.name} manufacturer={activeCamera?.manufacturer.name} modelName={activeCamera?.name} uuid={activeCamera?.uuid} isFavorited={activeCamera?.self_timer}></CameraDisplayCard>
           <GoogleDrivePickerButton/>
         </div>
         <div className={classes.metadataCardContainer}>
