@@ -22,10 +22,14 @@ const useStyles = makeStyles(() => ({
     // textAlign: 'center',
     // alignItems: 'center'
   },
+  headerContainer: {
+    marginTop:'10px',
+    textAlign: 'center',
+  },
 }));
 
 
-const DashboardPieChart = ({itemsList}) => {
+const DashboardPieChart = ({itemsList, titleText}) => {
   const classes = useStyles({});
 
   // A unique set of manufacturers
@@ -36,37 +40,47 @@ const DashboardPieChart = ({itemsList}) => {
     return unique;
 },[]);
 
+// Function to count Occurrence of manufacturer uuid
+function countManufacturerUUID(uuid, items) {
+  var occurs = 0;
+  
+  for (var i=0; i<items.length; i++) {
+    if ( 'uuid' in items[i] && items[i]?.manufacturer?.uuid === uuid ) occurs++;
+  }
+
+  return occurs;
+}
+
   // map over unique, count occurrences in total, format data for chart
   const manuFacturerData = uniqueManufacturers?.map(v => ({
     id: v?.manufacturer?.uuid, 
     label: v?.manufacturer?.name, 
-    value: getNbOccur(v?.manufacturer?.uuid, itemsList)
+    value: countManufacturerUUID(v?.manufacturer?.uuid, itemsList)
   }))
 
-  function getNbOccur(uuid, arr) {
-    var occurs = 0;
-    
-    for (var i=0; i<arr.length; i++) {
-      if ( 'uuid' in arr[i] && arr[i]?.manufacturer?.uuid === uuid ) occurs++;
-    }
-  
-    return occurs;
-  }
+  // sort data
+  manuFacturerData.sort(function(a, b) { 
+    return b.value - a.value;
+})
+
 
 
 
   return (
 <div className={classes.mainContainer}>
+<div className={classes.headerContainer}>
+  {titleText}
+</div>
     <PieChart
   series={[
     {
-      data: manuFacturerData,
+      data: manuFacturerData.slice(0,10),
       innerRadius: 30,
       outerRadius: 100,
       paddingAngle: 5,
       cornerRadius: 5,
-      startAngle: -90,
-      endAngle: 180,
+      startAngle: -30,
+      endAngle: 250,
       cx: 150,
       cy: 150,
     },

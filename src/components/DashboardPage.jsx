@@ -89,8 +89,8 @@ const DashboardPage = () => {
   return (
     <div className={classes.mainLayout}>
       <div className={classes.chartContainer}>
-      {cameraList && (<DashboardPieChart itemsList={cameraList}/>)}
-
+      {cameraList && (<DashboardPieChart itemsList={cameraList} titleText="Camera Distribution"/>)}
+      {lensList && (<DashboardPieChart itemsList={lensList} titleText="Lens Distribution"/>)}
       </div>
       <div className={classes.camerasLensesAndFavsContainer}>
         <div className={classes.camerasAndLensesContainer}>
