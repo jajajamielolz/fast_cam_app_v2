@@ -27,7 +27,7 @@ const handleOpenPicker = () => {
     // customViews: customViewsArray, // custom view
     callbackFunction: (data) => {
       if (data.action === 'cancel') {
-        console.log('User clicked cancel/close button')
+        // console.log('User clicked cancel/close button')
       }
       // console.log(authResponse)
       // console.log(data)

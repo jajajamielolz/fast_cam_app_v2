@@ -66,7 +66,7 @@ const Carousel = ({displayItems, carouselIconSource, displayType, titleText}) =>
   const [showNextButton, setShowNextButton] = useState(progressStartNumber >=activeDisplaySize);
   const [showPreviousButton, setShowPreviousButton] = useState(false);
   const [activeDisplayItems, setActiveDisplayItems] = useState(displayItems?.slice(0, activeDisplaySize));
-  console.log(activeDisplayItems)
+  // console.log(activeDisplayItems)
 
   const handleClickNext = () => {
     setShowPreviousButton(true)

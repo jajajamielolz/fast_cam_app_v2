@@ -4,9 +4,18 @@ import FavoritesContainer from './Favorites/FavoritesContainer';
 import {makeStyles} from '@material-ui/core/styles';
 import Carousel from './Carousel';
 import {ICON_LINKS} from '../static/icons/icon_links'
+import DashboardPieChart from './Charts/DashboardPieChart';
 
 const useStyles = makeStyles(() => ({
+  mainLayout: {
+    marginTop: '30px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  chartContainer: {
 
+  },
   carouselContainer: {
     justifyContent: 'center', 
     display: 'flex',
@@ -24,14 +33,13 @@ const useStyles = makeStyles(() => ({
 
   },
   camerasLensesAndFavsContainer: {
-    marginTop: '30px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   },
   favoritesContainer: {
     marginTop: '20px',
-    marginLeft: '50px'
+    marginLeft: '20px'
     // display: 'flex',
     // marginTop: '20px',
     // justifyContent: "center",
@@ -79,7 +87,11 @@ const DashboardPage = () => {
       
   if (!camerasLoading && !lensesLoading) {
   return (
-    <div>
+    <div className={classes.mainLayout}>
+      <div className={classes.chartContainer}>
+      {cameraList && (<DashboardPieChart itemsList={cameraList}/>)}
+
+      </div>
       <div className={classes.camerasLensesAndFavsContainer}>
         <div className={classes.camerasAndLensesContainer}>
           <div className={classes.carouselContainer}>
