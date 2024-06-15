@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { fetchFromAPI } from '../utils/fetchFromAPI'
 import FavoritesContainer from './Favorites/FavoritesContainer';
 import {makeStyles} from '@material-ui/core/styles';
-import Carousel from './Carousel';
+import Carousel from './Carousel/Carousel';
 import {ICON_LINKS} from '../static/icons/icon_links'
 import DashboardPieChart from './Charts/DashboardPieChart';
 
