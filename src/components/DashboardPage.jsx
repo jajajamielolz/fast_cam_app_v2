@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import { fetchFromAPI } from '../utils/fetchFromAPI'
-import FavoritesContainer from './Favorites/FavoritesContainer';
+// import FavoritesContainer from './Favorites/FavoritesContainer';
 import {makeStyles} from '@material-ui/core/styles';
 import Carousel from './Carousel/Carousel';
 import {ICON_LINKS} from '../static/icons/icon_links'
@@ -59,12 +59,28 @@ const DashboardPage = () => {
   const [lensList, setLensList] = useState([]);
   const [camerasLoading, setCamerasLoading] = useState(true);
   const [cameraList, setCameraList] = useState([]);
-  const [favoritesList, setFavoritesList] = useState([]);
+  // const [favoritesList, setFavoritesList] = useState([]);
+  const [addedFilter, setAddedFilter] = useState(null);
+
+  const buildURLWithFilter = useCallback(() => {
+    let cameraURL= 'cameras'
+    let lensURL= 'lenses'
+    if (addedFilter?.filterType === 'cameras') {
+      cameraURL = cameraURL + '?' + addedFilter.field + '=' + addedFilter.name
+    } 
+    if (addedFilter?.filterType === 'lenses') {
+      lensURL = lensURL + '?' + addedFilter.field + '=' + addedFilter.name
+    } 
+
+    return ({cameraURL:cameraURL, lensURL:lensURL})
+
+  }, [addedFilter]);
+
   useEffect(() => {
       setCameraList(null);
-      fetchFromAPI(`cameras`)
+      fetchFromAPI(buildURLWithFilter().cameraURL)
         .then((data) => {
-          const cams = data?.map(v => ({...v, id: v?.uuid, manufacturer_name: v?.manufacturer?.name, lens_mount: v?.lens_mount?.name}))
+          const cams = data?.map(v => ({...v, id: v?.uuid, manufacturer_name: v?.manufacturer?.name, lens_mount: v?.lens_mount?.name, lens_mount_uuid: v?.lens_mount?.uuid}))
           setCameraList(cams);
 
           // USING SELF TIMER BOOL AS FAV BC LAZY
@@ -72,18 +88,18 @@ const DashboardPage = () => {
           const favs = cams.filter(function (fav) {
             return fav?.self_timer
           });
-          setFavoritesList(favs)
+          // setFavoritesList(favs)
 
           setCamerasLoading(false)})
-      }, [camerasLoading]);
+      }, [buildURLWithFilter, camerasLoading]);
 
   useEffect(() => {
     setLensList(null);
-      fetchFromAPI(`lenses`)
+      fetchFromAPI(buildURLWithFilter().lensURL)
         .then((data) => {
         setLensList(data?.map(v => ({...v, id: v?.uuid, manufacturer_name: v?.manufacturer?.name, lens_mount: v?.lens_mount?.name})));
         setLensesLoading(false)})
-      }, [lensesLoading]);
+      }, [buildURLWithFilter, lensesLoading]);
       
   if (!camerasLoading && !lensesLoading) {
   return (
@@ -97,18 +113,18 @@ const DashboardPage = () => {
           <div className={classes.carouselContainer}>
             <div className={classes.carousel}>
 
-              {cameraList && (<Carousel displayItems={cameraList} carouselIconSource={ICON_LINKS.carouselIconSourceCamera} displayType={'Cameras'} titleText={'Cameras'}/>)}
+              {cameraList && (<Carousel filterType='cameras' setAddedFilter={setAddedFilter} showFilters={true} displayItems={cameraList} carouselIconSource={ICON_LINKS.carouselIconSourceCamera} displayType={'Cameras'} titleText={'Cameras'}/>)}
             </div>
           </div>
           <div className={classes.carouselContainer}>
             <div className={classes.carousel}>
-              {lensList &&(<Carousel displayItems={lensList} carouselIconSource={ICON_LINKS.carouselIconSourceLens} displayType={'Lenses'} titleText={'Lenses'}/>)}
+              {lensList &&(<Carousel filterType='lenses' setAddedFilter={setAddedFilter} showFilters={true} displayItems={lensList} carouselIconSource={ICON_LINKS.carouselIconSourceLens} displayType={'Lenses'} titleText={'Lenses'}/>)}
             </div>
           </div>
         </div>
-          <div className={classes.favoritesContainer}>
+          {/* <div className={classes.favoritesContainer}>
             <FavoritesContainer displayItems={favoritesList} carouselIconSource='../static/icons/CamFavIcon.svg' displayType={'Cameras'} titleText={'Favorite Cameras'}/>
-          </div>
+          </div> */}
         
       </div>
 

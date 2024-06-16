@@ -7,7 +7,7 @@ import {ReactComponent as ArrowBack} from '../../static/icons/navigate_before.sv
 import {ReactComponent as ArrowForward} from '../../static/icons/navigate_next.svg';
 import LensDisplayCard from '../Lens/LensDisplayCard'
 import CameraDisplayCard from '../Camera/CameraDisplayCard'
-
+import CarouselFilter from '../Filter/CarouselFilter';
 
 const commonTextStyles = {
   fontFamily: 'Source Sans Pro',
@@ -58,7 +58,7 @@ const useStyles = makeStyles(() => ({
   cardContainer: {gap: '12px'},
 }));
 
-const Carousel = ({displayItems, carouselIconSource, displayType, titleText}) => {
+const Carousel = ({filterType, setAddedFilter, displayItems, carouselIconSource, displayType, titleText, showFilters = false}) => {
   const classes = useStyles();
   const activeDisplaySize = 3;
   const progressStartNumber = activeDisplaySize <= displayItems?.length ? activeDisplaySize : displayItems?.length
@@ -126,7 +126,11 @@ const Carousel = ({displayItems, carouselIconSource, displayType, titleText}) =>
 
   
   const defaultText = 'Compatible ' + displayType
-  
+
+  // TODO: make these lists unique
+  const manufacturerFilterOptions= displayItems?.map(v => ({field: 'manufacturer_name', uuid: v?.manufacturer?.uuid, name: v?.manufacturer?.name}))
+  const mountFilterOptions= displayItems?.map(v => ({field: 'lens_mount_name', uuid: v?.lens_mount_uuid, name: v?.lens_mount}))
+
   return (
     <div>
       <div className={classes.carouselHeader}>
@@ -135,6 +139,12 @@ const Carousel = ({displayItems, carouselIconSource, displayType, titleText}) =>
           <Grid item className={classes.titleText}>
             {titleText ? titleText : defaultText}
           </Grid>
+          {showFilters && (
+          <>
+            <CarouselFilter filterType={filterType} setAddedFilter={setAddedFilter} filterTitle="Manufacturer" filterOptions={manufacturerFilterOptions}/>
+            <CarouselFilter filterType={filterType} setAddedFilter={setAddedFilter} filterTitle="Mount"  filterOptions={mountFilterOptions}/>
+          </>
+        )}
         </Grid>
 
         <div className={classes.navigationContainer}>
