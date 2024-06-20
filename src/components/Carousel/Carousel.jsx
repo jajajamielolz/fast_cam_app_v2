@@ -58,7 +58,7 @@ const useStyles = makeStyles(() => ({
   cardContainer: {gap: '12px'},
 }));
 
-const Carousel = ({filterType, setAddedFilter, displayItems, carouselIconSource, displayType, titleText, showFilters = false}) => {
+const Carousel = ({filterType, setAddedFilter, addedFilter, displayItems, carouselIconSource, displayType, titleText, showFilters = false}) => {
   const classes = useStyles();
   const activeDisplaySize = 3;
   const progressStartNumber = activeDisplaySize <= displayItems?.length ? activeDisplaySize : displayItems?.length
@@ -127,9 +127,20 @@ const Carousel = ({filterType, setAddedFilter, displayItems, carouselIconSource,
   
   const defaultText = 'Compatible ' + displayType
 
-  // TODO: make these lists unique
-  const manufacturerFilterOptions= displayItems?.map(v => ({field: 'manufacturer_name', uuid: v?.manufacturer?.uuid, name: v?.manufacturer?.name}))
-  const mountFilterOptions= displayItems?.map(v => ({field: 'lens_mount_name', uuid: v?.lens_mount_uuid, name: v?.lens_mount}))
+  const manufacturerFilterOptions= displayItems?.map(v => ({field: 'manufacturer_name', uuid: v?.manufacturer?.uuid, name: v?.manufacturer?.name})).reduce((unique, o) => {
+    if(!unique.some(obj => obj?.uuid === o?.uuid)) {
+      unique.push(o);
+    }
+    return unique;
+},[])
+  const mountFilterOptions= displayItems?.map(v => ({field: 'lens_mount_name', uuid: v?.lens_mount_uuid, name: v?.lens_mount})).reduce((unique, o) => {
+    if(!unique.some(obj => obj?.uuid === o?.uuid)) {
+      unique.push(o);
+    }
+    return unique;
+},[])
+
+
 
   return (
     <div>
@@ -141,8 +152,8 @@ const Carousel = ({filterType, setAddedFilter, displayItems, carouselIconSource,
           </Grid>
           {showFilters && (
           <>
-            <CarouselFilter filterType={filterType} setAddedFilter={setAddedFilter} filterTitle="Manufacturer" filterOptions={manufacturerFilterOptions}/>
-            <CarouselFilter filterType={filterType} setAddedFilter={setAddedFilter} filterTitle="Mount"  filterOptions={mountFilterOptions}/>
+            <CarouselFilter filterType={filterType} addedFilter={addedFilter} setAddedFilter={setAddedFilter} filterTitle="Manufacturer" filterOptions={manufacturerFilterOptions}/>
+            <CarouselFilter filterType={filterType} addedFilter={addedFilter} setAddedFilter={setAddedFilter} filterTitle="Mount"  filterOptions={mountFilterOptions}/>
           </>
         )}
         </Grid>

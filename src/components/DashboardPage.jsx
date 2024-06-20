@@ -60,21 +60,22 @@ const DashboardPage = () => {
   const [camerasLoading, setCamerasLoading] = useState(true);
   const [cameraList, setCameraList] = useState([]);
   // const [favoritesList, setFavoritesList] = useState([]);
-  const [addedFilter, setAddedFilter] = useState(null);
+  const [addedLensFilter, setAddedLensFilter] = useState(null);
+  const [addedCameraFilter, setAddedCameraFilter] = useState(null);
 
   const buildURLWithFilter = useCallback(() => {
     let cameraURL= 'cameras'
     let lensURL= 'lenses'
-    if (addedFilter?.filterType === 'cameras') {
-      cameraURL = cameraURL + '?' + addedFilter.field + '=' + addedFilter.name
+    if (addedCameraFilter) {
+      cameraURL = cameraURL + '?' + addedCameraFilter.field + '=' + addedCameraFilter.name
     } 
-    if (addedFilter?.filterType === 'lenses') {
-      lensURL = lensURL + '?' + addedFilter.field + '=' + addedFilter.name
+    if (addedLensFilter) {
+      lensURL = lensURL + '?' + addedLensFilter.field + '=' + addedLensFilter.name
     } 
 
     return ({cameraURL:cameraURL, lensURL:lensURL})
 
-  }, [addedFilter]);
+  }, [addedLensFilter, addedCameraFilter]);
 
   useEffect(() => {
       setCameraList(null);
@@ -113,12 +114,12 @@ const DashboardPage = () => {
           <div className={classes.carouselContainer}>
             <div className={classes.carousel}>
 
-              {cameraList && (<Carousel filterType='cameras' setAddedFilter={setAddedFilter} showFilters={true} displayItems={cameraList} carouselIconSource={ICON_LINKS.carouselIconSourceCamera} displayType={'Cameras'} titleText={'Cameras'}/>)}
+              {cameraList && (<Carousel filterType='cameras' setAddedFilter={setAddedCameraFilter} addedFilter={addedCameraFilter} showFilters={true} displayItems={cameraList} carouselIconSource={ICON_LINKS.carouselIconSourceCamera} displayType={'Cameras'} titleText={'Cameras'}/>)}
             </div>
           </div>
           <div className={classes.carouselContainer}>
             <div className={classes.carousel}>
-              {lensList &&(<Carousel filterType='lenses' setAddedFilter={setAddedFilter} showFilters={true} displayItems={lensList} carouselIconSource={ICON_LINKS.carouselIconSourceLens} displayType={'Lenses'} titleText={'Lenses'}/>)}
+              {lensList &&(<Carousel filterType='lenses' setAddedFilter={setAddedLensFilter}  addedFilter={addedLensFilter} showFilters={true} displayItems={lensList} carouselIconSource={ICON_LINKS.carouselIconSourceLens} displayType={'Lenses'} titleText={'Lenses'}/>)}
             </div>
           </div>
         </div>
