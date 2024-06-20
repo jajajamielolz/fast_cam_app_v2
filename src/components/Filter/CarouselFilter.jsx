@@ -57,10 +57,17 @@ const CarouselFilter = ({setAddedFilter, filterTitle, filterOptions, filterType,
 
   const [showFilterOptions, setShowFilterOptions] = useState(null);
 
-
+  const setFilterFavorites = () => {
+    setAddedFilter({field: 'Favorites', filterTitle: filterTitle, name: filterTitle})
+  }
 
   const handleOnClickFilter = () => {
-    setShowFilterOptions(showFilterOptions ? false : true)
+    if (filterTitle ==="Favorites"){
+      addedFilter ? setAddedFilter(null) : setFilterFavorites()
+
+    } else {
+      setShowFilterOptions(showFilterOptions ? false : true)
+    }
   };
 
   const handleOnClickRemoveFilters = (event) => {

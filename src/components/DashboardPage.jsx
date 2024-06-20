@@ -64,16 +64,18 @@ const DashboardPage = () => {
   const [addedCameraFilter, setAddedCameraFilter] = useState(null);
 
   const buildURLWithFilter = useCallback(() => {
-    let cameraURL= 'cameras'
-    let lensURL= 'lenses'
+    let cameraURL = 'cameras'
+    let lensURL = 'lenses'
+    let cameraFavorites = null
     if (addedCameraFilter) {
-      cameraURL = cameraURL + '?' + addedCameraFilter.field + '=' + addedCameraFilter.name
+      addedCameraFilter.field === 'Favorites' ? cameraFavorites = true :cameraURL = cameraURL + '?' + addedCameraFilter.field + '=' + addedCameraFilter.name
+      
     } 
     if (addedLensFilter) {
       lensURL = lensURL + '?' + addedLensFilter.field + '=' + addedLensFilter.name
     } 
 
-    return ({cameraURL:cameraURL, lensURL:lensURL})
+    return ({cameraURL:cameraURL, lensURL:lensURL, cameraFavorites: cameraFavorites})
 
   }, [addedLensFilter, addedCameraFilter]);
 
@@ -82,13 +84,16 @@ const DashboardPage = () => {
       fetchFromAPI(buildURLWithFilter().cameraURL)
         .then((data) => {
           const cams = data?.map(v => ({...v, id: v?.uuid, manufacturer_name: v?.manufacturer?.name, lens_mount: v?.lens_mount?.name, lens_mount_uuid: v?.lens_mount?.uuid}))
-          setCameraList(cams);
 
           // USING SELF TIMER BOOL AS FAV BC LAZY
           // displayedItem?.self_timer
           const favs = cams.filter(function (fav) {
             return fav?.self_timer
           });
+
+          buildURLWithFilter().cameraFavorites ? setCameraList(favs) : setCameraList(cams)
+
+
           // setFavoritesList(favs)
 
           setCamerasLoading(false)})

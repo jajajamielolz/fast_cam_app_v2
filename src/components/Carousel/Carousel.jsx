@@ -154,6 +154,9 @@ const Carousel = ({filterType, setAddedFilter, addedFilter, displayItems, carous
           <>
             <CarouselFilter filterType={filterType} addedFilter={addedFilter} setAddedFilter={setAddedFilter} filterTitle="Manufacturer" filterOptions={manufacturerFilterOptions}/>
             <CarouselFilter filterType={filterType} addedFilter={addedFilter} setAddedFilter={setAddedFilter} filterTitle="Mount"  filterOptions={mountFilterOptions}/>
+            {displayType==='Cameras' &&(
+              <CarouselFilter filterType={filterType} addedFilter={addedFilter} setAddedFilter={setAddedFilter} filterTitle="Favorites"/>
+            )}
           </>
         )}
         </Grid>
