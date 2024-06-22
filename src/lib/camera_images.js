@@ -22,6 +22,7 @@ export const CAMERA_IMAGE_MAP = {
     "SRT 101":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Minolta_srt_101_IMGP3035_wp.jpg/600px-Minolta_srt_101_IMGP3035_wp.jpg",
     "FT-1 Motor":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/76_105_Konica_Ft_1_Motor_%28152924675%29.jpeg/440px-76_105_Konica_Ft_1_Motor_%28152924675%29.jpeg",
     "XG1":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Minolta_XG-1.JPG/600px-Minolta_XG-1.JPG",
+    "AE-1":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Canon_AE-1_with_50mm_f1.8_S.C._II.jpg/600px-Canon_AE-1_with_50mm_f1.8_S.C._II.jpg",
     "":"",
 
 }
