@@ -6,15 +6,15 @@ import Carousel from '../Carousel/Carousel.jsx';
 import {ICON_LINKS} from '../../static/icons/icon_links'
 import GoogleDrivePickerButton from '../GoogleDrivePickerButton.jsx';
 import {makeStyles} from '@material-ui/core/styles';
-
+import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR, PRIMARY_BACKGROUND_COLOR } from '../../lib/styles';
 
 const useStyles = makeStyles(() => ({
   page: {
-
+    background: PRIMARY_BACKGROUND_COLOR
   },
   displayAndMetadataRow: {
     display: 'flex',
-    marginTop: '20px',
+    paddingTop: '20px',
     justifyContent: "center",
   },
   metadataCardContainer: {
@@ -32,11 +32,12 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
   },
   carousel: {
+    background: SECONDARY_BACKGROUND_COLOR,
     display: 'flex',
     marginTop: '20px',
     justifyContent: "center",
     borderRadius: '20px',
-    borderColor: 'rgba(194,201,209, 0.5)',
+    borderColor: BORDER_COLOR,
     border: '2px solid',
     padding: '10px'
   },

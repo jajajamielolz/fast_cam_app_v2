@@ -3,17 +3,18 @@ import { fetchFromAPI } from '../../utils/fetchFromAPI'
 import LensDisplayCard from './LensDisplayCard';
 import Carousel from '../Carousel/Carousel';
 import {ICON_LINKS} from '../../static/icons/icon_links'
-
+import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR, PRIMARY_BACKGROUND_COLOR } from '../../lib/styles';
 import {makeStyles} from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles(() => ({
   page: {
+    background: PRIMARY_BACKGROUND_COLOR
 
   },
   displayAndMetadataRow: {
     display: 'flex',
-    marginTop: '20px',
+    paddingTop: '20px',
     justifyContent: "center",
   },
   metadataCardContainer: {
@@ -28,11 +29,12 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
   },
   carousel: {
+    background: SECONDARY_BACKGROUND_COLOR,
     display: 'flex',
     marginTop: '20px',
     justifyContent: "center",
     borderRadius: '20px',
-    borderColor: 'rgba(194,201,209, 0.5)',
+    borderColor: BORDER_COLOR,
     border: '2px solid',
     padding: '10px'
   }

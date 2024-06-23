@@ -1,16 +1,19 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import { PieChart } from '@mui/x-charts/PieChart';
+import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR } from '../../lib/styles';
 
 const useStyles = makeStyles(() => ({
   mainContainer: {
+    background: SECONDARY_BACKGROUND_COLOR,
     marginRight: '20px',
+    marginBottom: '10px',
     // height: '200px',
     // width: '200px',
     // height: props => props.previewSize ? '200px' : null,
     // width: props => props.previewSize ? '200px' : null,
     // cursor: props => props.previewSize ? 'pointer' : null,
-    borderColor: 'rgba(194,201,209, 0.5)',
+    borderColor: BORDER_COLOR,
     border: '2px solid',
     // backgroundColor: 'white',
     // padding: '16px',

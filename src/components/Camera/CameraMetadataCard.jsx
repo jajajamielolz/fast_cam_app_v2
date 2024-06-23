@@ -1,13 +1,14 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Divider from '@mui/material/Divider';
+import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR, ACTIVATED_COLOR, LIGHT_RED } from '../../lib/styles';
 
 const useStyles = makeStyles(() => ({
   displayCard: {
     width: '150px',
-    borderColor: 'rgba(194,201,209, 0.5)',
+    borderColor: BORDER_COLOR,
     border: '1px solid',
-    backgroundColor: 'white',
+    backgroundColor: SECONDARY_BACKGROUND_COLOR,
     padding: '16px',
     borderRadius: '20px',
     gap: '12px',
@@ -45,7 +46,7 @@ const CameraMetadataCard = ({minShutterSpeed, maxShutterSpeed, hasAperturePriori
 
 
   const greenOrRed = (isGreen) => {
-    return isGreen ? 'rgba(0,255,0, 0.25)' : 'rgba(255,0,0, 0.25)'
+    return isGreen ? ACTIVATED_COLOR : LIGHT_RED
   };
 
   return (

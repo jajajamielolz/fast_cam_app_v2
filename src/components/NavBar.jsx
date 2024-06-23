@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 import CameraRoll from '@mui/icons-material/CameraRoll';
 import { useNavigate } from "react-router-dom";
 
+import { SECONDARY_BACKGROUND_COLOR, GRAY_ACCENT_COLOR} from '../lib/styles';
+
 const yourPages = [
   { text: 'Cameras', href: '/cameras' },
   { text: 'Lenses', href: '/lenses' }
@@ -35,10 +37,10 @@ function NavBar() {
 
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{backgroundColor: SECONDARY_BACKGROUND_COLOR}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <CameraRoll sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <CameraRoll sx={{ color: 'black', display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -50,7 +52,7 @@ function NavBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'black',
               textDecoration: 'none',
             }}
           >
@@ -83,7 +85,7 @@ function NavBar() {
               <Button
                 key={page.text}
                 onClick={handleClickNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'black', display: 'block' }}
               >
                 {page.text}
               </Button>

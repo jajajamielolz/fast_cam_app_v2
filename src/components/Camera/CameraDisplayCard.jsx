@@ -3,17 +3,18 @@ import {makeStyles} from '@material-ui/core/styles';
 import {CAMERA_IMAGE_MAP} from '../../lib/camera_images';
 import { useNavigate } from "react-router-dom";
 import FavoriteButton from '../Favorites/FavoriteButton';
+import { BORDER_COLOR, PRIMARY_BACKGROUND_COLOR, SECONDARY_BACKGROUND_COLOR } from '../../lib/styles';
 
 const useStyles = makeStyles(() => ({
   displayCard: {
     // height: '200px',
     // width: '200px',
     height: props => props.previewSize ? '200px' : null,
-    width: props => props.previewSize ? '200px' : null,
+    width: props => props.previewSize ? '220px' : null,
     cursor: props => props.previewSize ? 'pointer' : null,
-    borderColor: 'rgba(194,201,209, 0.5)',
+    borderColor: BORDER_COLOR,
     border: '1px solid',
-    backgroundColor: 'white',
+    backgroundColor: props => props.previewSize ? PRIMARY_BACKGROUND_COLOR : SECONDARY_BACKGROUND_COLOR,
     padding: '16px',
     borderRadius: '20px',
     gap: '12px',

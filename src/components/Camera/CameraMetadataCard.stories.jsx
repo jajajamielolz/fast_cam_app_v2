@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import CameraMetadataCard from './CameraMetadataCard';
 
 export default {

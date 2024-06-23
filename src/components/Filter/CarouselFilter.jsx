@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-
+import { BORDER_COLOR, BUTTON_COLOR, ACTIVATED_BUTTON_COLOR } from '../../lib/styles';
 
 const useStyles = makeStyles((props) => ({
   filterContainer: {
     display: 'flex',
     marginLeft: '20px',
     cursor: 'pointer',
-    background: props => props.activeFilterApplied ? 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)' : null,
-    borderColor: 'rgba(194,201,209, 0.5)',
+    background: props => props.activeFilterApplied ? ACTIVATED_BUTTON_COLOR : BUTTON_COLOR,
+    borderColor: BORDER_COLOR,
     border: '2px solid',
     borderRadius: '30px',
     paddingLeft: '15px',
@@ -16,7 +16,7 @@ const useStyles = makeStyles((props) => ({
     justifyContent:'center',
   },
   filterOption: {
-    borderColor: 'rgba(194,201,209, 0.5)',
+    borderColor: BORDER_COLOR,
     border: '2px solid',
     borderRadius: '30px',
     paddingLeft: '8px',
@@ -32,7 +32,7 @@ const useStyles = makeStyles((props) => ({
     maxWidth: '300px',
     borderRadius: '16px',
     background: 'rgba(247, 247, 247, 1)',
-    borderColor: 'rgba(194,201,209, 0.5)',
+    borderColor: BORDER_COLOR,
     border: '2px solid',
     zIndex: 1,
     position: 'absolute',
@@ -42,7 +42,7 @@ const useStyles = makeStyles((props) => ({
   xButton: {
     cursor: 'pointer',
     visibility: props => props.activeFilterApplied ? 'visible' : 'hidden',
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    background: ACTIVATED_BUTTON_COLOR,
     border: 0,
     borderRadius: 8,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',

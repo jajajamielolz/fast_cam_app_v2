@@ -7,7 +7,8 @@ import {ReactComponent as ArrowBack} from '../../static/icons/navigate_before.sv
 import {ReactComponent as ArrowForward} from '../../static/icons/navigate_next.svg';
 import LensDisplayCard from '../Lens/LensDisplayCard'
 import CameraDisplayCard from '../Camera/CameraDisplayCard'
-import CarouselFilter from '../Filter/CarouselFilter';
+import CarouselFilter from '../Filter/CarouselFilter'; 
+import { SECONDARY_BACKGROUND_COLOR } from '../../lib/styles';
 
 const commonTextStyles = {
   fontFamily: 'Source Sans Pro',
@@ -17,6 +18,9 @@ const commonTextStyles = {
   color: 'rgba(0, 44, 62, 1)',
 };
 const useStyles = makeStyles(() => ({
+  mainContainer: {
+    background: SECONDARY_BACKGROUND_COLOR
+  },
   carouselHeader: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -143,7 +147,7 @@ const Carousel = ({filterType, setAddedFilter, addedFilter, displayItems, carous
 
 
   return (
-    <div>
+    <div className={classes.mainContainer}>
       <div className={classes.carouselHeader}>
         <Grid container direction="row" className={classes.titleContainer}>
           <Avatar src={carouselIconSource} className={classes.avatar} alt={'Carousel Avatar'} />

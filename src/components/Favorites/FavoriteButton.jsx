@@ -4,6 +4,7 @@ import {ReactComponent as CamFavIcon} from '../../static/icons/CamFavIcon.svg'
 import PropTypes from 'prop-types';
 import { patchToAPI } from '../../utils/patchToAPI';
 import Tooltip from "react-simple-tooltip"
+import { BORDER_COLOR } from '../../lib/styles';
 
 const useStyles = makeStyles(() => ({
   iconButton: {
@@ -12,7 +13,7 @@ const useStyles = makeStyles(() => ({
     cursor: 'pointer',
     backgroundColor: props => props.favorited ? 'rgba(255, 244, 0, 1)' : null,
     fill: props => props.favorited ? 'black' : 'rgba(194,201,209, 0.5)',
-    borderColor: 'rgba(194,201,209, 0.5)',
+    borderColor: BORDER_COLOR,
     border: '2px solid',
     borderRadius: '30px',
     paddingTop: '3px',
