@@ -6,7 +6,7 @@ import Carousel from '../Carousel/Carousel.jsx';
 import {ICON_LINKS} from '../../static/icons/icon_links'
 import GoogleDrivePickerButton from '../GoogleDrivePickerButton.jsx';
 import {makeStyles} from '@material-ui/core/styles';
-import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR, PRIMARY_BACKGROUND_COLOR } from '../../lib/styles';
+import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR, PRIMARY_BACKGROUND_COLOR } from '../../lib/Styles';
 
 const useStyles = makeStyles(() => ({
   page: {

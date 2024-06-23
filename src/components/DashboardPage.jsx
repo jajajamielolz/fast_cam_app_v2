@@ -5,7 +5,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Carousel from './Carousel/Carousel';
 import {ICON_LINKS} from '../static/icons/icon_links'
 import DashboardPieChart from './Charts/DashboardPieChart';
-import { BORDER_COLOR, PRIMARY_BACKGROUND_COLOR, SECONDARY_BACKGROUND_COLOR } from '../lib/styles';
+import { BORDER_COLOR, PRIMARY_BACKGROUND_COLOR, SECONDARY_BACKGROUND_COLOR } from '../lib/Styles';
 const useStyles = makeStyles(() => ({
   mainLayout: {
     background: PRIMARY_BACKGROUND_COLOR,

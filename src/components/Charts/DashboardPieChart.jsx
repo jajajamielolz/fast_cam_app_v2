@@ -1,7 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import { PieChart } from '@mui/x-charts/PieChart';
-import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR } from '../../lib/styles';
+import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR, PRIMARY_BACKGROUND_COLOR, DISABLED_COLOR, HEAVY_COLOR, DARKER_DISABLED_COLOR, DARKER_ACTIVATED_COLOR,ACCENT_COLOR, ACTIVATED_COLOR } from '../../lib/Styles';
 
 const useStyles = makeStyles(() => ({
   mainContainer: {
@@ -65,6 +65,7 @@ function countManufacturerUUID(uuid, items) {
   manuFacturerData.sort(function(a, b) { 
     return b.value - a.value;
 })
+const palette = [ACTIVATED_COLOR, DISABLED_COLOR, HEAVY_COLOR, DARKER_DISABLED_COLOR, DARKER_ACTIVATED_COLOR, ACCENT_COLOR, PRIMARY_BACKGROUND_COLOR];
 
 
 
@@ -75,6 +76,7 @@ function countManufacturerUUID(uuid, items) {
   {titleText}
 </div>
     <PieChart
+    colors={palette}
   series={[
     {
       data: manuFacturerData.slice(0,10),

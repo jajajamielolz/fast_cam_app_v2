@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import {LENS_IMAGE_MAP} from '../../lib/lens_images';
 import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
-import { BORDER_COLOR, PRIMARY_BACKGROUND_COLOR, SECONDARY_BACKGROUND_COLOR } from '../../lib/styles';
+import { BORDER_COLOR, PRIMARY_BACKGROUND_COLOR, SECONDARY_BACKGROUND_COLOR } from '../../lib/Styles';
 
 const useStyles = makeStyles(() => ({
   displayCard: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     justifyContent: "center",
     textAlign: 'center',
-    paddingBottom: '25px'
+    paddingBottom: '25px',
 
   },
   displayHeader: {

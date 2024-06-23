@@ -1,18 +1,17 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import { BORDER_COLOR, BUTTON_COLOR, ACTIVATED_BUTTON_COLOR } from '../../lib/styles';
+import { BORDER_COLOR, BUTTON_COLOR, ENABLED_GRADIENT_COLOR } from '../../lib/Styles';
 
 const useStyles = makeStyles((props) => ({
   filterContainer: {
     display: 'flex',
     marginLeft: '20px',
     cursor: 'pointer',
-    background: props => props.activeFilterApplied ? ACTIVATED_BUTTON_COLOR : BUTTON_COLOR,
+    background: props => props.activeFilterApplied ? ENABLED_GRADIENT_COLOR : BUTTON_COLOR,
     borderColor: BORDER_COLOR,
     border: '2px solid',
     borderRadius: '30px',
     paddingLeft: '15px',
-    paddingRight: '5px',
     justifyContent:'center',
   },
   filterOption: {
@@ -42,11 +41,11 @@ const useStyles = makeStyles((props) => ({
   xButton: {
     cursor: 'pointer',
     visibility: props => props.activeFilterApplied ? 'visible' : 'hidden',
-    background: ACTIVATED_BUTTON_COLOR,
+    background: ENABLED_GRADIENT_COLOR,
     border: 0,
     borderRadius: 8,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    color: 'white',
+    marginLeft: '9px',
+    color: 'black',
   }
 }));
 

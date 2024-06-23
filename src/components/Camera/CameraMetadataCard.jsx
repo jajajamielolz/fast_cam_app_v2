@@ -1,7 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Divider from '@mui/material/Divider';
-import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR, ACTIVATED_COLOR, LIGHT_RED } from '../../lib/styles';
+import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR, ACTIVATED_COLOR, DISABLED_COLOR, ENABLED_GRADIENT_COLOR, DISABLED_GRADIENT_COLOR } from '../../lib/Styles';
 
 const useStyles = makeStyles(() => ({
   displayCard: {
@@ -46,7 +46,7 @@ const CameraMetadataCard = ({minShutterSpeed, maxShutterSpeed, hasAperturePriori
 
 
   const greenOrRed = (isGreen) => {
-    return isGreen ? ACTIVATED_COLOR : LIGHT_RED
+    return isGreen ? ENABLED_GRADIENT_COLOR : DISABLED_GRADIENT_COLOR
   };
 
   return (

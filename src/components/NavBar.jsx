@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import CameraRoll from '@mui/icons-material/CameraRoll';
 import { useNavigate } from "react-router-dom";
 
-import { SECONDARY_BACKGROUND_COLOR, GRAY_ACCENT_COLOR} from '../lib/styles';
+import { SECONDARY_BACKGROUND_COLOR, ACCENT_COLOR} from '../lib/Styles';
 
 const yourPages = [
   { text: 'Cameras', href: '/cameras' },

@@ -3,7 +3,7 @@ import { fetchFromAPI } from '../../utils/fetchFromAPI'
 import LensDisplayCard from './LensDisplayCard';
 import Carousel from '../Carousel/Carousel';
 import {ICON_LINKS} from '../../static/icons/icon_links'
-import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR, PRIMARY_BACKGROUND_COLOR } from '../../lib/styles';
+import { BORDER_COLOR, SECONDARY_BACKGROUND_COLOR, PRIMARY_BACKGROUND_COLOR } from '../../lib/Styles';
 import {makeStyles} from '@material-ui/core/styles';
 
 

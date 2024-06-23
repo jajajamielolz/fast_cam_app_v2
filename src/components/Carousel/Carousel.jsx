@@ -8,7 +8,7 @@ import {ReactComponent as ArrowForward} from '../../static/icons/navigate_next.s
 import LensDisplayCard from '../Lens/LensDisplayCard'
 import CameraDisplayCard from '../Camera/CameraDisplayCard'
 import CarouselFilter from '../Filter/CarouselFilter'; 
-import { SECONDARY_BACKGROUND_COLOR } from '../../lib/styles';
+import { SECONDARY_BACKGROUND_COLOR } from '../../lib/Styles';
 
 const commonTextStyles = {
   fontFamily: 'Source Sans Pro',
